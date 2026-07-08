@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page not found | PDF Chroma</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=optional">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=optional" media="print" onload="this.media='all'; this.onload=null;">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=optional"></noscript>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="chromaCanvas" aria-hidden="true"></canvas>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="/index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="-30 -30 280 280" width="38" height="38">
+          <defs>
+            <linearGradient id="hdrFoldGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ff3b3b"/>
+              <stop offset="50%" stop-color="#f59e0b"/>
+              <stop offset="100%" stop-color="#8b5cf6"/>
+            </linearGradient>
+            <path id="hdrPageShape" d="M0 0 H62 L86 24 V120 H0 Z"/>
+          </defs>
+          <g transform="translate(40,40)">
+            <g transform="rotate(-11 43 60) translate(14,18)">
+              <use href="#hdrPageShape" fill="#1b1c26" stroke="#8b5cf6" stroke-width="3" opacity="0.9"/>
+              <path d="M62 0 V24 H86 Z" fill="#8b5cf6" opacity="0.9"/>
+            </g>
+            <g transform="rotate(-4 43 60) translate(7,9)">
+              <use href="#hdrPageShape" fill="#161720" stroke="#3b82f6" stroke-width="3" opacity="0.95"/>
+              <path d="M62 0 V24 H86 Z" fill="#3b82f6" opacity="0.95"/>
+            </g>
+            <g>
+              <use href="#hdrPageShape" fill="#15161d" stroke="#ef4444" stroke-width="3.5"/>
+              <path d="M62 0 V24 H86 Z" fill="url(#hdrFoldGrad)"/>
+            </g>
+          </g>
+        </svg>
+      </span>
+      <span class="brand-word">PDF<span class="brand-accent">Chroma</span></span>
+    </a>
+    <nav class="site-nav">
+      <a href="/index.html#organize">Organize</a>
+      <a href="/index.html#convert">Convert</a>
+      <a href="/index.html#optimize">Optimize</a>
+      <a href="/blog/index.html">Blog</a>
+    </nav>
+    <a href="/index.html" class="btn btn--primary header-cta">All tools</a>
+  </div>
+</header>
+
+<main>
+  <section class="error-hero wrap">
+    <p class="error-code">404</p>
+    <h1>This page went missing — probably converted itself somewhere</h1>
+    <p class="error-sub">The page you're looking for doesn't exist, or the link is out of date. Here's how to get back on track:</p>
+
+    <div class="error-actions">
+      <a href="/index.html" class="btn btn--primary">Go to homepage</a>
+      <a href="/blog/index.html" class="btn btn--secondary">Read the blog</a>
+    </div>
+
+    <div class="error-quicklinks">
+      <p>Or jump straight to a popular tool:</p>
+      <div class="related-links">
+        <a class="related-link" href="/tools/merge-pdf.html">Merge PDF</a>
+        <a class="related-link" href="/tools/compress-pdf.html">Compress PDF</a>
+        <a class="related-link" href="/tools/pdf-to-word.html">PDF to Word</a>
+        <a class="related-link" href="/tools/pdf-to-jpg.html">PDF to JPG</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer wrap">
+  <p>PDF Chroma is built for anyone tired of upload limits, watermarked exports, and "premium" paywalls. Free, forever.</p>
+</footer>
+
+<script src="tools-data.js" defer></script>
+<script src="chroma-bg.js" defer></script>
+</body>
+</html>

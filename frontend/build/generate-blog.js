@@ -37,6 +37,14 @@ function headMeta(post) {
 <meta property="og:title" content="${escapeHtml(post.seoTitle)}">
 <meta property="og:description" content="${escapeHtml(post.seoDescription)}">
 <meta property="og:type" content="article">
+<meta property="og:url" content="${SITE_URL}/blog/${post.slug}.html">
+<meta property="og:image" content="${SITE_URL}/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${escapeHtml(post.seoTitle)}">
+<meta name="twitter:description" content="${escapeHtml(post.seoDescription)}">
+<meta name="twitter:image" content="${SITE_URL}/assets/og-image.png">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="/assets/favicon-16.png" sizes="16x16" type="image/png">
@@ -179,6 +187,15 @@ function renderIndex() {
 <title>Blog — Guides for working with PDFs | PDF Chroma</title>
 <meta name="description" content="Practical, no-fluff guides for merging, converting, compressing, and organizing PDF files.">
 <link rel="canonical" href="${SITE_URL}/blog/index.html">
+<meta property="og:title" content="Blog — Guides for working with PDFs | PDF Chroma">
+<meta property="og:description" content="Practical, no-fluff guides for merging, converting, compressing, and organizing PDF files.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="${SITE_URL}/blog/index.html">
+<meta property="og:image" content="${SITE_URL}/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="${SITE_URL}/assets/og-image.png">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">

@@ -74,6 +74,13 @@ function renderPage(tool){
 <meta property="og:description" content="${escapeHtml(tool.seoDescription)}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="${SITE_URL}/tools/${tool.slug}.html">
+<meta property="og:image" content="${SITE_URL}/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${escapeHtml(tool.seoTitle)}">
+<meta name="twitter:description" content="${escapeHtml(tool.seoDescription)}">
+<meta name="twitter:image" content="${SITE_URL}/assets/og-image.png">
 <meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
