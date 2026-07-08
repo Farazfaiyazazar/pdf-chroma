@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Convert Word to PDF Online Free | PDF Chroma</title>
+<meta name="description" content="Turn a .docx or .doc file into a PDF that looks the same everywhere, on any device. Fast, free, and processed privately.">
+<link rel="canonical" href="https://pdfchroma.com/tools/word-to-pdf.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/assets/favicon-16.png" sizes="16x16" type="image/png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta property="og:title" content="Convert Word to PDF Online Free | PDF Chroma">
+<meta property="og:description" content="Turn a .docx or .doc file into a PDF that looks the same everywhere, on any device. Fast, free, and processed privately.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pdfchroma.com/tools/word-to-pdf.html">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=optional">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=optional" media="print" onload="this.media='all'; this.onload=null;">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=optional"></noscript>
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Word to PDF — PDF Chroma","url":"https://pdfchroma.com/tools/word-to-pdf.html","applicationCategory":"Utility","operatingSystem":"Any (web-based)","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Turn a .docx or .doc file into a PDF that looks the same everywhere, on any device. Fast, free, and processed privately."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Will my fonts and formatting be preserved?","acceptedAnswer":{"@type":"Answer","text":"Yes — the conversion renders the document exactly as it would print, including fonts, spacing, and images."}},{"@type":"Question","name":"Does it work with .doc as well as .docx?","acceptedAnswer":{"@type":"Answer","text":"Yes, both older .doc and modern .docx formats are supported."}},{"@type":"Question","name":"What if my Word file has tracked changes or comments?","acceptedAnswer":{"@type":"Answer","text":"The output reflects how the document currently displays; for a clean PDF, accept or resolve tracked changes in Word first."}}]}</script>
+</head>
+<body>
+
+<canvas id="chromaCanvas" aria-hidden="true"></canvas>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="../index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="-30 -30 280 280" width="38" height="38">
+          <defs>
+            <linearGradient id="hdrFoldGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ff3b3b"/>
+              <stop offset="50%" stop-color="#f59e0b"/>
+              <stop offset="100%" stop-color="#8b5cf6"/>
+            </linearGradient>
+            <path id="hdrPageShape" d="M0 0 H62 L86 24 V120 H0 Z"/>
+          </defs>
+          <g transform="translate(40,40)">
+            <g transform="rotate(-11 43 60) translate(14,18)">
+              <use href="#hdrPageShape" fill="#1b1c26" stroke="#8b5cf6" stroke-width="3" opacity="0.9"/>
+              <path d="M62 0 V24 H86 Z" fill="#8b5cf6" opacity="0.9"/>
+            </g>
+            <g transform="rotate(-4 43 60) translate(7,9)">
+              <use href="#hdrPageShape" fill="#161720" stroke="#3b82f6" stroke-width="3" opacity="0.95"/>
+              <path d="M62 0 V24 H86 Z" fill="#3b82f6" opacity="0.95"/>
+            </g>
+            <g>
+              <use href="#hdrPageShape" fill="#15161d" stroke="#ef4444" stroke-width="3.5"/>
+              <path d="M62 0 V24 H86 Z" fill="url(#hdrFoldGrad)"/>
+            </g>
+          </g>
+        </svg>
+      </span>
+      <span class="brand-word">PDF<span class="brand-accent">Chroma</span></span>
+    </a>
+    <nav class="site-nav">
+      <a href="../index.html#organize">Organize</a>
+      <a href="../index.html#convert">Convert</a>
+      <a href="../index.html#optimize">Optimize</a>
+      <a href="../blog/index.html">Blog</a>
+    </nav>
+    <a href="../index.html" class="btn btn--primary header-cta">All tools</a>
+  </div>
+</header>
+
+<main>
+  <nav class="breadcrumb wrap" aria-label="Breadcrumb">
+    <a href="../index.html">Home</a> <span>/</span> <span>Word to PDF</span>
+  </nav>
+
+  <section class="tool-page-hero wrap">
+    <h1>Convert Word to PDF</h1>
+    <p class="tool-page-intro">Turn a Word document into a PDF that keeps its exact formatting no matter what device or app opens it — ideal for sending resumes, contracts, or reports.</p>
+  </section>
+
+  <section class="tool-widget-section wrap">
+    <div class="workspace">
+      <div class="workspace-head">
+        <span class="workspace-icon" id="widgetIcon"></span>
+        <div>
+          <h2>Word to PDF</h2>
+          <p>Turn a .docx file into a print-ready PDF.</p>
+        </div>
+      </div>
+
+      <div class="dropzone" id="dropzone">
+        <input type="file" id="fileInput" hidden>
+        <div class="dropzone-inner">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M12 4v11m0-11 4 4m-4-4-4 4M5 17v2a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p>Drop a file here or <span>click to browse</span></p>
+          <small id="wsAccept"></small>
+        </div>
+      </div>
+
+      <ul class="file-list" id="fileList"></ul>
+      <div class="tool-options" id="toolOptions"></div>
+      <button type="button" class="btn btn--primary workspace-submit" id="wsSubmit" disabled>Process & download</button>
+
+      <div class="progress-tracker" id="progressTracker">
+        <div class="progress-step"><span class="dot">1</span><small>Uploading</small><span class="progress-line"></span></div>
+        <div class="progress-step"><span class="dot">2</span><small>Processing</small><span class="progress-line"></span></div>
+        <div class="progress-step"><span class="dot">3</span><small>Done</small></div>
+      </div>
+
+      <div class="workspace-status" id="wsStatus"></div>
+    </div>
+  </section>
+
+  <section class="tool-steps-section wrap">
+    <h2>How it works</h2>
+    <ol class="steps-list">
+        <li><span class="step-num">1</span><span>Upload your .doc or .docx file.</span></li>
+        <li><span class="step-num">2</span><span>Click &quot;Process &amp; download&quot; — no settings needed.</span></li>
+        <li><span class="step-num">3</span><span>Your formatting, fonts, and layout are preserved in the output PDF.</span></li>
+    </ol>
+  </section>
+
+  <section class="tool-faq-section wrap">
+    <h2>Frequently asked questions</h2>
+    <div class="faq-list">
+        <div class="faq-item">
+          <button type="button" class="faq-q"><span>Will my fonts and formatting be preserved?</span><span class="plus"></span></button>
+          <div class="faq-panel"><p>Yes — the conversion renders the document exactly as it would print, including fonts, spacing, and images.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q"><span>Does it work with .doc as well as .docx?</span><span class="plus"></span></button>
+          <div class="faq-panel"><p>Yes, both older .doc and modern .docx formats are supported.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q"><span>What if my Word file has tracked changes or comments?</span><span class="plus"></span></button>
+          <div class="faq-panel"><p>The output reflects how the document currently displays; for a clean PDF, accept or resolve tracked changes in Word first.</p></div>
+        </div>
+    </div>
+  </section>
+
+  <section class="related-section wrap">
+    <h2>Related tools</h2>
+    <div class="related-links">
+        <a class="related-link" href="powerpoint-to-pdf.html">PowerPoint to PDF</a>
+        <a class="related-link" href="excel-to-pdf.html">Excel to PDF</a>
+        <a class="related-link" href="jpg-to-pdf.html">JPG to PDF</a>
+        <a class="related-link" href="pdf-to-word.html">PDF to Word</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer wrap">
+  <p>PDF Chroma is built for anyone tired of upload limits, watermarked exports, and "premium" paywalls. Free, forever.</p>
+</footer>
+
+<script src="../tools-data.js" defer></script>
+<script src="../chroma-bg.js" defer></script>
+<script>window.CURRENT_TOOL_ID = "word-to-pdf"; window.OBSIDIAN_API_BASE = "https://pdfchroma.com/api";</script>
+<script src="../tool-widget.js" defer></script>
+</body>
+</html>

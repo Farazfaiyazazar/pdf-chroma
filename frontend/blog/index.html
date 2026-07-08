@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Guides for working with PDFs | PDF Chroma</title>
+<meta name="description" content="Practical, no-fluff guides for merging, converting, compressing, and organizing PDF files.">
+<link rel="canonical" href="https://pdfchroma.com/blog/index.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=optional">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=optional" media="print" onload="this.media='all'; this.onload=null;">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=optional"></noscript>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<canvas id="chromaCanvas" aria-hidden="true"></canvas>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="../index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="-30 -30 280 280" width="38" height="38">
+          <defs>
+            <linearGradient id="hdrFoldGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ff3b3b"/>
+              <stop offset="50%" stop-color="#f59e0b"/>
+              <stop offset="100%" stop-color="#8b5cf6"/>
+            </linearGradient>
+            <path id="hdrPageShape" d="M0 0 H62 L86 24 V120 H0 Z"/>
+          </defs>
+          <g transform="translate(40,40)">
+            <g transform="rotate(-11 43 60) translate(14,18)">
+              <use href="#hdrPageShape" fill="#1b1c26" stroke="#8b5cf6" stroke-width="3" opacity="0.9"/>
+              <path d="M62 0 V24 H86 Z" fill="#8b5cf6" opacity="0.9"/>
+            </g>
+            <g transform="rotate(-4 43 60) translate(7,9)">
+              <use href="#hdrPageShape" fill="#161720" stroke="#3b82f6" stroke-width="3" opacity="0.95"/>
+              <path d="M62 0 V24 H86 Z" fill="#3b82f6" opacity="0.95"/>
+            </g>
+            <g>
+              <use href="#hdrPageShape" fill="#15161d" stroke="#ef4444" stroke-width="3.5"/>
+              <path d="M62 0 V24 H86 Z" fill="url(#hdrFoldGrad)"/>
+            </g>
+          </g>
+        </svg>
+      </span>
+      <span class="brand-word">PDF<span class="brand-accent">Chroma</span></span>
+    </a>
+    <nav class="site-nav">
+      <a href="../index.html#organize">Organize</a>
+      <a href="../index.html#convert">Convert</a>
+      <a href="../index.html#optimize">Optimize</a>
+      <a href="index.html">Blog</a>
+    </nav>
+    <a href="../index.html" class="btn btn--primary header-cta">All tools</a>
+  </div>
+</header>
+
+<main>
+  <section class="blog-hero wrap">
+    <h1>Guides for working with PDFs</h1>
+    <p class="blog-hero-sub">Practical, no-fluff advice — no filler, no "10 amazing tips," just what actually works.</p>
+  </section>
+
+  <section class="blog-grid-section wrap">
+    <div class="blog-grid">
+      
+    <a class="blog-card" href="how-to-add-a-watermark-to-a-pdf.html">
+      <p class="blog-card-meta">Security · 4 min read</p>
+      <h2>How to Add a Watermark to a PDF (And When You Actually Need One)</h2>
+      <p class="blog-card-excerpt">Watermarks are one of those things people add out of habit. Here's when they genuinely help, and how to add one without ruining readability.</p>
+      <span class="blog-card-date">July 5, 2026</span>
+    </a>
+
+    <a class="blog-card" href="organize-a-messy-pdf.html">
+      <p class="blog-card-meta">Organize · 4 min read</p>
+      <h2>5 Ways to Organize a Messy PDF: Split, Merge, Rotate, and Reorder</h2>
+      <p class="blog-card-excerpt">Scanned documents rarely come out perfectly organized the first time. Here are five common problems and the quickest way to fix each one.</p>
+      <span class="blog-card-date">July 1, 2026</span>
+    </a>
+
+    <a class="blog-card" href="convert-pdf-to-word-without-breaking-formatting.html">
+      <p class="blog-card-meta">Convert · 5 min read</p>
+      <h2>PDF to Word: How to Convert Without Breaking Your Formatting</h2>
+      <p class="blog-card-excerpt">PDF to Word conversion has a reputation for turning clean documents into a mess of stray text boxes. Here's why that happens, and how to avoid it.</p>
+      <span class="blog-card-date">June 25, 2026</span>
+    </a>
+
+    <a class="blog-card" href="reduce-pdf-file-size-for-email.html">
+      <p class="blog-card-meta">Optimize · 4 min read</p>
+      <h2>How to Reduce PDF File Size for Email (Without Losing Quality)</h2>
+      <p class="blog-card-excerpt">Most email providers cap attachments around 25MB. Here's what actually makes a PDF that large, and how to fix it without turning your document into mush.</p>
+      <span class="blog-card-date">June 20, 2026</span>
+    </a>
+
+    <a class="blog-card" href="how-to-merge-pdf-files.html">
+      <p class="blog-card-meta">Organize · 5 min read</p>
+      <h2>How to Merge Multiple PDF Files Into One (Step-by-Step)</h2>
+      <p class="blog-card-excerpt">Combining PDFs sounds simple until you have ten files, three of them scanned upside down, and a deadline in twenty minutes. Here's how to do it cleanly.</p>
+      <span class="blog-card-date">June 15, 2026</span>
+    </a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer wrap">
+  <p>PDF Chroma is built for anyone tired of upload limits, watermarked exports, and "premium" paywalls. Free, forever.</p>
+</footer>
+
+<script src="../tools-data.js" defer></script>
+<script src="../chroma-bg.js" defer></script>
+</body>
+</html>

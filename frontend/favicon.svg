@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30 -30 280 280">
+  <defs>
+    <linearGradient id="foldGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff3b3b"/>
+      <stop offset="50%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="spectrum" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff3b3b"/>
+      <stop offset="30%" stop-color="#f59e0b"/>
+      <stop offset="55%" stop-color="#22c55e"/>
+      <stop offset="78%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <path id="pageShape" d="M0 0 H62 L86 24 V120 H0 Z"/>
+  </defs>
+
+  <rect x="-30" y="-30" width="280" height="280" rx="36" fill="#12131a"/>
+
+  <g transform="translate(40,40)">
+    <g transform="rotate(-11 43 60) translate(14,18)">
+      <use href="#pageShape" fill="#1b1c26" stroke="#8b5cf6" stroke-width="3" opacity="0.9"/>
+      <path d="M62 0 V24 H86 Z" fill="#8b5cf6" opacity="0.9"/>
+    </g>
+    <g transform="rotate(-4 43 60) translate(7,9)">
+      <use href="#pageShape" fill="#161720" stroke="#3b82f6" stroke-width="3" opacity="0.95"/>
+      <path d="M62 0 V24 H86 Z" fill="#3b82f6" opacity="0.95"/>
+    </g>
+    <g>
+      <use href="#pageShape" fill="#15161d" stroke="#ef4444" stroke-width="3.5"/>
+      <path d="M62 0 V24 H86 Z" fill="url(#foldGrad)"/>
+      <line x1="-20" y1="78" x2="104" y2="46" stroke="url(#spectrum)" stroke-width="8" stroke-linecap="round" filter="url(#glow)"/>
+    </g>
+  </g>
+</svg>
