@@ -1,6 +1,7 @@
 {
   "name": "pdf-chroma-backend",
   "version": "1.0.0",
+  "license": "MIT",
   "description": "Backend API for PDF Chroma \u2014 merge, split, compress, convert, watermark and more.",
   "main": "server.js",
   "type": "commonjs",
