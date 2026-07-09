@@ -18,6 +18,7 @@ const BLOG_POSTS = [
     publishDate: '2026-06-15',
     readMinutes: 5,
     relatedTools: ['merge', 'rotate', 'split'],
+    relatedPosts: ['organize-a-messy-pdf', 'reduce-pdf-file-size-for-email'],
     content: [
       { type: 'p', text: 'If you\'ve ever had to email someone "the contract," "the appendix," and "the signature page" as three separate attachments, you already know why merging PDFs matters. A single, well-ordered document is easier to read, easier to file, and much harder to lose track of than a scattered handful of attachments.' },
       { type: 'h2', text: 'The basic process' },
@@ -48,6 +49,7 @@ const BLOG_POSTS = [
     publishDate: '2026-06-20',
     readMinutes: 4,
     relatedTools: ['compress', 'pdf-to-jpg'],
+    relatedPosts: ['how-to-merge-pdf-files', 'turn-photos-into-a-pdf'],
     content: [
       { type: 'p', text: 'A ten-page PDF that\'s somehow 40MB is almost never a text problem — plain text compresses to almost nothing. The culprit is nearly always images: high-resolution photos, scanned pages saved at print quality, or screenshots pasted in at full size.' },
       { type: 'h2', text: 'Why PDFs get so large' },
@@ -76,6 +78,7 @@ const BLOG_POSTS = [
     publishDate: '2026-06-25',
     readMinutes: 5,
     relatedTools: ['pdf-to-word', 'word-to-pdf'],
+    relatedPosts: ['pdf-to-powerpoint-guide', 'pdf-to-excel-guide'],
     content: [
       { type: 'p', text: 'A PDF isn\'t really a "document" in the way Word thinks about documents — it\'s closer to a printed page description. It knows where every letter sits, but it doesn\'t necessarily know that a paragraph is a paragraph, or that a table is a table. Converting back to an editable format means reconstructing that structure, and how well that goes depends heavily on how the PDF was made in the first place.' },
       { type: 'h2', text: 'Which PDFs convert cleanly' },
@@ -104,6 +107,7 @@ const BLOG_POSTS = [
     publishDate: '2026-07-01',
     readMinutes: 4,
     relatedTools: ['split', 'merge', 'rotate', 'numbers'],
+    relatedPosts: ['how-to-merge-pdf-files', 'how-to-add-a-watermark-to-a-pdf'],
     content: [
       { type: 'p', text: 'Anyone who has scanned a stack of paper documents knows the result rarely comes out perfect on the first try. Pages end up sideways, files that should be one document arrive as five, and the one page you actually need is buried in the middle of something else entirely. Here\'s how to fix the most common issues.' },
       { type: 'h2', text: '1. Sideways or upside-down pages' },
@@ -131,6 +135,7 @@ const BLOG_POSTS = [
     publishDate: '2026-07-05',
     readMinutes: 4,
     relatedTools: ['watermark', 'numbers'],
+    relatedPosts: ['organize-a-messy-pdf', 'reduce-pdf-file-size-for-email'],
     content: [
       { type: 'p', text: 'A watermark is a piece of text (or an image) stamped across every page of a document, usually at an angle, usually semi-transparent. It\'s a small addition, but it changes how a document is perceived — and it\'s worth being deliberate about when to use one.' },
       { type: 'h2', text: 'When a watermark actually helps' },
@@ -145,6 +150,146 @@ const BLOG_POSTS = [
       { type: 'p', text: 'The most common mistake is making a watermark too dark or too large — it ends up fighting with the actual content for attention. A good watermark is visible enough to notice, but light enough that someone can still comfortably read the text underneath it without straining.' },
       { type: 'h2', text: 'Try it yourself' },
       { type: 'p', text: 'Our Watermark tool lets you set your own text and adjust the opacity with a slider, so you can dial it in until it\'s noticeable without being distracting. Pairing it with Add Page Numbers is common for internal drafts that are being reviewed by several people at once.' }
+    ]
+  },
+  {
+    id: 'jpg-to-pdf-guide',
+    slug: 'turn-photos-into-a-pdf',
+    category: 'Convert',
+    title: 'How to Turn Photos of Documents Into a Single PDF',
+    seoTitle: 'How to Turn Photos Into a PDF (Free, No App) | PDF Chroma',
+    seoDescription: 'Snapped photos of a document with your phone? Here\'s how to combine them into one clean, shareable PDF instead of sending five separate images.',
+    excerpt: 'Snapping a photo of a document is easy. Turning five separate photos into one document someone will actually open — that\'s the part people skip.',
+    publishDate: '2026-07-10',
+    readMinutes: 4,
+    relatedTools: ['jpg-to-pdf', 'rotate'],
+    relatedPosts: ['reduce-pdf-file-size-for-email', 'convert-pdf-to-jpg'],
+    content: [
+      { type: 'p', text: 'Someone asks for a signed form, a receipt, or a page from a notebook, and the fastest response is: take a photo, send it. That works fine for one page. It falls apart the moment there\'s more than one — now you\'re sending three or four separate image files and hoping the recipient opens them in the right order.' },
+      { type: 'h2', text: 'Why a PDF is the better format here' },
+      { type: 'p', text: 'A PDF keeps every page together, in order, as a single file. It also just looks more intentional — a stack of loose JPGs named IMG_4471.jpg through IMG_4474.jpg reads as an afterthought, even when the content is identical.' },
+      { type: 'h2', text: 'Getting a clean result from phone photos' },
+      { type: 'list', items: [
+        'Flatten the document before photographing it — curled pages create shadows and distortion that make text harder to read.',
+        'Use natural, even lighting if possible. A single harsh light source creates glare that can wash out text in the photo.',
+        'Photograph straight-on, not at an angle — an angled shot makes the page look like a trapezoid, and text near the edges gets harder to read.',
+        'Take all the photos before converting, so you can combine them in one pass in the right order.'
+      ]},
+      { type: 'h2', text: 'Order matters more than people expect' },
+      { type: 'p', text: 'It\'s easy to photograph pages slightly out of sequence, especially with a multi-page form. Double-check the order of your images before combining — it\'s much faster to reorder image files than to redo the conversion after noticing page 3 came before page 2.' },
+      { type: 'h2', text: 'Try it yourself' },
+      { type: 'p', text: 'Our JPG to PDF tool combines multiple images into a single PDF in the order you add them. If a photo came out sideways, Rotate PDF fixes that after the fact without needing to retake the photo.' }
+    ]
+  },
+  {
+    id: 'pdf-to-jpg-guide',
+    slug: 'convert-pdf-to-jpg',
+    category: 'Convert',
+    title: 'How to Convert a PDF Into Images (And When You\'d Actually Want To)',
+    seoTitle: 'Convert PDF to JPG Online Free — Full Guide | PDF Chroma',
+    seoDescription: 'When turning a PDF into JPG images actually makes sense, and how to do it without losing readability.',
+    excerpt: 'Turning a PDF into images seems backwards until you need to drop a single page into a slide deck or a website — then it\'s the only thing that works.',
+    publishDate: '2026-07-11',
+    readMinutes: 4,
+    relatedTools: ['pdf-to-jpg', 'jpg-to-pdf'],
+    relatedPosts: ['turn-photos-into-a-pdf', 'how-to-merge-pdf-files'],
+    content: [
+      { type: 'p', text: 'PDFs are great for documents, but they\'re the wrong format the moment you need a page to behave like a picture — dropped into a slide, embedded in a webpage, or attached inline in a chat message where a PDF attachment would just show as a grey icon nobody clicks.' },
+      { type: 'h2', text: 'When this actually comes up' },
+      { type: 'list', items: [
+        'Pulling one page out of a longer report to drop into a presentation slide.',
+        'Sharing a document preview on a website, where visitors expect to see the content directly, not download a file first.',
+        'Posting a page in a chat app or forum where images preview inline but PDF attachments don\'t.',
+        'Creating thumbnails of document pages for a gallery or index view.'
+      ]},
+      { type: 'h2', text: 'What resolution actually matters' },
+      { type: 'p', text: 'For anything viewed on a screen, a moderate resolution keeps text sharp without producing an unnecessarily large image file. It only becomes worth going higher-resolution if the image will be printed at a large size, where more detail is genuinely visible.' },
+      { type: 'h2', text: 'One thing that surprises people' },
+      { type: 'p', text: 'Once a page becomes an image, the text inside it is no longer selectable or searchable — it\'s just pixels that happen to look like text. That\'s fine for viewing, but worth remembering if someone later tries to copy a sentence out of it and can\'t.' },
+      { type: 'h2', text: 'Try it yourself' },
+      { type: 'p', text: 'Our PDF to JPG tool converts every page into its own image — a single-page PDF becomes one JPG, multi-page files come back as a zip of images, one per page.' }
+    ]
+  },
+  {
+    id: 'pdf-to-ppt-guide',
+    slug: 'pdf-to-powerpoint-guide',
+    category: 'Convert',
+    title: 'Turning a PDF Report Into an Editable PowerPoint',
+    seoTitle: 'Convert PDF to PowerPoint Online Free — Guide | PDF Chroma',
+    seoDescription: 'How to turn a PDF into a PowerPoint presentation, what converts cleanly, and what to expect when the source PDF wasn\'t built as a slide deck.',
+    excerpt: 'A PDF report and a PowerPoint deck are structured completely differently — here\'s what actually happens when you convert one into the other.',
+    publishDate: '2026-07-12',
+    readMinutes: 4,
+    relatedTools: ['pdf-to-ppt', 'ppt-to-pdf'],
+    relatedPosts: ['convert-pdf-to-word-without-breaking-formatting', 'pdf-to-excel-guide'],
+    content: [
+      { type: 'p', text: 'Sometimes the content you need for a presentation already exists — just trapped inside a PDF report instead of a slide deck. Rather than rebuilding it from scratch, converting the PDF to PowerPoint gives you a starting point to reshape rather than a blank page.' },
+      { type: 'h2', text: 'What converts well' },
+      { type: 'p', text: 'PDFs that were originally exported *from* PowerPoint convert back the most cleanly, for an obvious reason — the page proportions and layout already match slide dimensions. Each page becomes a slide with its original content mostly intact.' },
+      { type: 'h2', text: 'What to expect from a report-style PDF' },
+      { type: 'p', text: 'A PDF built as a printed report (letter-sized pages, dense paragraphs, footnotes) doesn\'t translate naturally into a slide format. Conversion will still work — you\'ll get one slide per page — but expect to spend time afterward trimming text down to something a slide can actually hold, since a full page of paragraph text rarely fits, or reads well, on a single slide.' },
+      { type: 'h2', text: 'A practical way to use this' },
+      { type: 'p', text: 'Treat the conversion as a way to pull in the raw content — headings, key figures, images — rather than expecting a presentation-ready deck immediately. It\'s almost always faster to convert and then trim, than to retype everything from scratch into a new presentation.' },
+      { type: 'h2', text: 'Try it yourself' },
+      { type: 'p', text: 'Our PDF to PowerPoint tool converts each page into one slide. Going the other direction, PowerPoint to PDF turns a finished deck into a fixed, easily shareable PDF.' }
+    ]
+  },
+  {
+    id: 'excel-to-pdf-guide',
+    slug: 'excel-to-pdf-without-cutting-off-columns',
+    category: 'Convert',
+    title: 'How to Convert Excel to PDF Without Cutting Off Columns',
+    seoTitle: 'Convert Excel to PDF Without Cutting Off Columns | PDF Chroma',
+    seoDescription: 'Why exported Excel-to-PDF files sometimes cut off columns or split awkwardly across pages, and how to fix it before converting.',
+    excerpt: 'The most common Excel-to-PDF complaint isn\'t the conversion itself — it\'s columns getting sliced off the edge of the page. Here\'s why, and the fix.',
+    publishDate: '2026-07-13',
+    readMinutes: 4,
+    relatedTools: ['xls-to-pdf', 'pdf-to-xls'],
+    relatedPosts: ['pdf-to-excel-guide', 'reduce-pdf-file-size-for-email'],
+    content: [
+      { type: 'p', text: 'A spreadsheet that looks perfectly fine on screen often turns into a PDF where half the columns are missing, or split awkwardly across two separate pages. This isn\'t a bug in the conversion — it\'s a page-size problem that exists in the spreadsheet itself before it ever becomes a PDF.' },
+      { type: 'h2', text: 'Why this happens' },
+      { type: 'p', text: 'A spreadsheet has no fixed "page" — you can scroll sideways forever. A PDF absolutely does have a fixed page width. When you convert, Excel has to decide how to fit an infinitely wide grid onto a finite page, and by default, it often just cuts off whatever doesn\'t fit rather than shrinking it down.' },
+      { type: 'h2', text: 'The fix, before you convert' },
+      { type: 'list', items: [
+        'In Excel, check the Print Area (Page Layout tab) — this defines exactly which columns and rows will actually appear in the output.',
+        'Use "Fit to width: 1 page" under Page Setup, so all columns scale down to fit one page width instead of getting cut off.',
+        'Switch the page orientation to Landscape for wide tables — this alone solves most column-cutoff problems.',
+        'Preview it (Print Preview) before converting — it shows you exactly what the PDF will look like, including any awkward splits.'
+      ]},
+      { type: 'h2', text: 'If it\'s still splitting awkwardly' },
+      { type: 'p', text: 'Very wide tables sometimes need to accept multiple pages — that\'s fine, as long as it\'s intentional rather than accidental. What you want to avoid is a column getting silently dropped because it fell just outside the print area.' },
+      { type: 'h2', text: 'Try it yourself' },
+      { type: 'p', text: 'Once your print area and page setup look right in Excel, our Excel to PDF tool converts every sheet, following exactly the print settings you\'ve configured.' }
+    ]
+  },
+  {
+    id: 'pdf-to-excel-guide',
+    slug: 'pdf-to-excel-guide',
+    category: 'Convert',
+    title: 'Getting Clean Data Out of PDF Tables With PDF to Excel',
+    seoTitle: 'Convert PDF to Excel Online Free — What to Expect | PDF Chroma',
+    seoDescription: 'How well PDF-to-Excel conversion actually works, which PDFs give clean results, and how to fix messy output.',
+    excerpt: 'PDF to Excel conversion works great on a clean table and produces a mess on anything else. Here\'s how to tell which one you\'re dealing with.',
+    publishDate: '2026-07-14',
+    readMinutes: 4,
+    relatedTools: ['pdf-to-xls', 'xls-to-pdf'],
+    relatedPosts: ['excel-to-pdf-without-cutting-off-columns', 'convert-pdf-to-word-without-breaking-formatting'],
+    content: [
+      { type: 'p', text: 'A PDF invoice, statement, or report often has exactly the numbers you need — the problem is they\'re locked in a format built for reading, not for recalculating. PDF to Excel exists to bridge that gap, but it\'s worth knowing what it\'s actually good at before relying on it for something important.' },
+      { type: 'h2', text: 'What converts cleanly' },
+      { type: 'p', text: 'Simple, clearly-bordered tables — the kind with visible grid lines and one value per cell — tend to convert well. The tool can see the structure because the structure is visually obvious in the source PDF.' },
+      { type: 'h2', text: 'What tends to fall apart' },
+      { type: 'list', items: [
+        'Tables without visible borders, relying only on spacing to separate columns — much harder for any tool to detect reliably.',
+        'Merged or nested cells (common in financial statements) — these often need manual cleanup after conversion.',
+        'Text that isn\'t actually a table at all, just paragraphs with numbers in them — this won\'t organize into rows and columns no matter what.',
+        'Scanned PDFs — these need OCR before any table structure can be detected at all.'
+      ]},
+      { type: 'h2', text: 'A good habit after converting' },
+      { type: 'p', text: 'Before trusting any numbers pulled from a converted table, spot-check a handful of cells against the original PDF. It\'s a two-minute check that catches the kind of small misalignment (a value shifted one row down) that\'s easy to miss but expensive if it ends up in a report.' },
+      { type: 'h2', text: 'Try it yourself' },
+      { type: 'p', text: 'Our PDF to Excel tool works best on the clean, bordered-table case described above. For the reverse direction, Excel to PDF turns a finished spreadsheet into a fixed, shareable document.' }
     ]
   }
 ];

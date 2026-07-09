@@ -88,13 +88,22 @@ router.post('/jpg-to-pdf', upload.array('files', 30), wrap(async (req, res) => {
 // pdf-to-powerpoint, pdf-to-excel. LibreOffice headless does the heavy
 // lifting; quality on PDF -> editable formats depends on how structured
 // the source PDF is (scanned/image PDFs will need OCR first).
-async function convertWithLibreOffice(req, res, targetExt) {
+//
+// Important bug fix: by default, LibreOffice opens a PDF using its *Draw*
+// import filter — treating it as flat page graphics, not text. That makes
+// export to docx/pptx/xlsx fail outright ("no export filter found"), since
+// you can't export a Draw document into a text/spreadsheet format. Passing
+// --infilter="writer_pdf_import" forces LibreOffice to import the PDF as a
+// real Writer text document instead, which is what actually enables
+// conversion to editable formats.
+async function convertWithLibreOffice(req, res, targetExt, inFilter) {
   if (!req.file) { const e = new Error('no file'); e.status = 400; e.publicMessage = 'Please choose a file.'; throw e; }
   if (!(await checkBinary('soffice --version'))) {
     throw missingToolError('LibreOffice', 'sudo apt-get install -y libreoffice');
   }
+  const filterArg = inFilter ? ` --infilter="${inFilter}"` : '';
   await execAsync(
-    `soffice --headless --norestore --convert-to ${targetExt} --outdir "${req.jobDir}" "${req.file.path}"`,
+    `soffice --headless --norestore${filterArg} --convert-to ${targetExt} --outdir "${req.jobDir}" "${req.file.path}"`,
     { timeout: 120000 }
   );
   const base = path.parse(req.file.filename).name;
@@ -109,8 +118,8 @@ async function convertWithLibreOffice(req, res, targetExt) {
 router.post('/word-to-pdf', upload.single('file'), wrap((req, res) => convertWithLibreOffice(req, res, 'pdf')));
 router.post('/powerpoint-to-pdf', upload.single('file'), wrap((req, res) => convertWithLibreOffice(req, res, 'pdf')));
 router.post('/excel-to-pdf', upload.single('file'), wrap((req, res) => convertWithLibreOffice(req, res, 'pdf')));
-router.post('/pdf-to-word', upload.single('file'), wrap((req, res) => convertWithLibreOffice(req, res, 'docx')));
-router.post('/pdf-to-powerpoint', upload.single('file'), wrap((req, res) => convertWithLibreOffice(req, res, 'pptx')));
-router.post('/pdf-to-excel', upload.single('file'), wrap((req, res) => convertWithLibreOffice(req, res, 'xlsx')));
+router.post('/pdf-to-word', upload.single('file'), wrap((req, res) => convertWithLibreOffice(req, res, 'docx', 'writer_pdf_import')));
+router.post('/pdf-to-powerpoint', upload.single('file'), wrap((req, res) => convertWithLibreOffice(req, res, 'pptx', 'writer_pdf_import')));
+router.post('/pdf-to-excel', upload.single('file'), wrap((req, res) => convertWithLibreOffice(req, res, 'xlsx', 'writer_pdf_import')));
 
 module.exports = router;

@@ -47,6 +47,7 @@ function headMeta(post) {
 <meta name="twitter:image" content="${SITE_URL}/assets/og-image.png">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/assets/favicon-192.png" sizes="192x192" type="image/png">
 <link rel="icon" href="/assets/favicon-16.png" sizes="16x16" type="image/png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -117,6 +118,17 @@ function relatedToolLinks(post) {
   </section>`;
 }
 
+function relatedPostLinks(post) {
+  const posts = (post.relatedPosts || []).map((slug) => BLOG_POSTS.find((p) => p.slug === slug)).filter(Boolean);
+  if (!posts.length) return '';
+  return `<section class="related-section wrap">
+    <h2>Related articles</h2>
+    <div class="related-links">
+      ${posts.map((p) => `<a class="related-link" href="${p.slug}.html">${escapeHtml(p.title)}</a>`).join('\n      ')}
+    </div>
+  </section>`;
+}
+
 function articleSchema(post) {
   return {
     '@context': 'https://schema.org',
@@ -158,6 +170,7 @@ ${headerNav()}
     </div>
   </article>
 
+  ${relatedPostLinks(post)}
   ${relatedToolLinks(post)}
 </main>
 
@@ -198,6 +211,7 @@ function renderIndex() {
 <meta name="twitter:image" content="${SITE_URL}/assets/og-image.png">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/assets/favicon-192.png" sizes="192x192" type="image/png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
