@@ -30,6 +30,7 @@ app.get('/api/health', (req, res) => {
 app.use('/api', require('./routes/organize'));
 app.use('/api', require('./routes/optimize'));
 app.use('/api', require('./routes/convert'));
+app.use('/api', require('./routes/security'));
 
 // Central error handler — every route funnels failures here
 app.use((err, req, res, next) => {

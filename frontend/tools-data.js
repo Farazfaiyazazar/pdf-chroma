@@ -14,12 +14,15 @@ const TOOL_ICONS = {
   jpg: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="9" cy="10" r="1.6" fill="currentColor"/><path d="M4 17l5-5 4 4 3-3 4 4" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>',
   ppt: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="10.5" cy="11" r="2.6" stroke="currentColor" stroke-width="1.5"/></svg>',
   xls: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 8l8 8M16 8l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>',
+  lock: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 11V7a4 4 0 0 1 8 0v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="16" r="1.3" fill="currentColor"/></svg>',
+  unlock: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 11V7a4 4 0 0 1 7.5-2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="16" r="1.3" fill="currentColor"/></svg>',
 };
 
 const TOOL_ICON_BY_ID = {
   merge:'merge', split:'split', rotate:'rotate', numbers:'numbers', compress:'compress',
   watermark:'watermark', 'word-to-pdf':'wordpdf', 'ppt-to-pdf':'ppt', 'xls-to-pdf':'xls',
-  'jpg-to-pdf':'jpg', 'pdf-to-word':'wordpdf', 'pdf-to-ppt':'ppt', 'pdf-to-xls':'xls', 'pdf-to-jpg':'jpg'
+  'jpg-to-pdf':'jpg', 'pdf-to-word':'wordpdf', 'pdf-to-ppt':'ppt', 'pdf-to-xls':'xls', 'pdf-to-jpg':'jpg',
+  protect:'lock', unlock:'unlock'
 };
 
 const TOOLS = [
@@ -297,6 +300,46 @@ const TOOLS = [
       { q: 'What resolution are the output images?', a: 'Pages are rendered at 150 DPI, a good balance between clarity and file size for screen viewing and most printing.' },
       { q: 'Can I get PNG instead of JPG?', a: 'This tool outputs JPG by default; PNG support can be added by extending the backend route — see the project README.' },
       { q: 'Will text stay sharp in the image?', a: 'Yes, at 150 DPI text remains clearly readable, though it\'s no longer selectable since it\'s now part of a flat image.' }
+    ]
+  },
+  {
+    id: 'protect', slug: 'protect-pdf', group: 'security', cat: 'security',
+    title: 'Protect PDF', desc: 'Lock a PDF with a password so only people who know it can open it.',
+    endpoint: '/protect', field: 'file', multiple: false, accept: '.pdf', resultName: 'protected.pdf',
+    options: [{ name: 'password', label: 'Password', type: 'password', placeholder: 'Enter a password (min. 4 characters)' }],
+    seoTitle: 'Password Protect a PDF Online Free | PDF Chroma',
+    seoDescription: 'Add a password to a PDF so only people who know it can open the file. Free, private, 256-bit encryption, processed on our own server.',
+    h1: 'Add a password to a PDF',
+    intro: 'Lock a PDF with a password so it can only be opened by someone who knows it — useful for sending contracts, financial documents, or anything you don\'t want opened by the wrong person.',
+    steps: [
+      'Upload the PDF you want to protect.',
+      'Type the password you want to require to open it.',
+      'Click "Process & download" to get the password-protected file.'
+    ],
+    faq: [
+      { q: 'What encryption does this use?', a: 'The file is encrypted with 256-bit AES — the current standard for PDF password protection — using the open-source qpdf library.' },
+      { q: 'If I forget the password, can it be recovered?', a: 'No — that\'s the point of real encryption. There\'s no backdoor or recovery option, so store the password somewhere safe before sending the file.' },
+      { q: 'Does this also stop someone from editing or printing the PDF?', a: 'This sets a password required just to open and view the file. Separate printing or editing restrictions aren\'t set by this tool.' }
+    ]
+  },
+  {
+    id: 'unlock', slug: 'unlock-pdf', group: 'security', cat: 'security',
+    title: 'Unlock PDF', desc: 'Remove a password from a PDF you already know the password to.',
+    endpoint: '/unlock', field: 'file', multiple: false, accept: '.pdf', resultName: 'unlocked.pdf',
+    options: [{ name: 'password', label: 'Current password', type: 'password', placeholder: 'Enter the current password' }],
+    seoTitle: 'Unlock a Password-Protected PDF Online Free | PDF Chroma',
+    seoDescription: 'Remove a password from a PDF you already have the password for. Free, private, no software to install.',
+    h1: 'Remove a password from a PDF',
+    intro: 'If you have a password-protected PDF and know the password, this removes the protection so the file opens freely from then on.',
+    steps: [
+      'Upload the password-protected PDF.',
+      'Enter the current password.',
+      'Click "Process & download" to get an unlocked copy.'
+    ],
+    faq: [
+      { q: 'Can this remove a password I don\'t know?', a: 'No — you need the correct password to unlock the file. This removes protection you already have access to; it isn\'t a password-cracking tool.' },
+      { q: 'Is the original file changed?', a: 'No, a new unlocked copy is created — your original password-protected file is left untouched.' },
+      { q: 'Why would I want to remove a password?', a: 'Common reasons: the document no longer contains sensitive information, you\'re archiving it internally, or re-entering a password every time has become inconvenient for a file you now only share internally.' }
     ]
   }
 ];

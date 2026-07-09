@@ -15,13 +15,17 @@ const ICONS = {
   jpg: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="9" cy="10" r="1.6" fill="currentColor"/><path d="M4 17l5-5 4 4 3-3 4 4" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>',
   ppt: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="10.5" cy="11" r="2.6" stroke="currentColor" stroke-width="1.5"/></svg>',
   xls: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 8l8 8M16 8l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>',
+  lock: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 11V7a4 4 0 0 1 8 0v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="16" r="1.3" fill="currentColor"/></svg>',
+  unlock: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 11V7a4 4 0 0 1 7.5-2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="16" r="1.3" fill="currentColor"/></svg>',
+  eye: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/></svg>',
   generic: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="5" y="3" width="14" height="18" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M9 9h6M9 13h6M9 17h3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>',
 };
 
 const ICON_BY_ID = {
   merge:'merge', split:'split', rotate:'rotate', numbers:'numbers', compress:'compress',
   watermark:'watermark', 'word-to-pdf':'wordpdf', 'ppt-to-pdf':'ppt', 'xls-to-pdf':'xls',
-  'jpg-to-pdf':'jpg', 'pdf-to-word':'wordpdf', 'pdf-to-ppt':'ppt', 'pdf-to-xls':'xls', 'pdf-to-jpg':'jpg'
+  'jpg-to-pdf':'jpg', 'pdf-to-word':'wordpdf', 'pdf-to-ppt':'ppt', 'pdf-to-xls':'xls', 'pdf-to-jpg':'jpg',
+  protect:'lock', unlock:'unlock'
 };
 
 const CHECK_ICON = `<svg class="status-icon show" viewBox="0 0 44 44" fill="none">
@@ -130,10 +134,25 @@ function initToolWidget(tool){
           </span>
         </label>`;
       }
+      if (o.type === 'password') {
+        return `<label>${o.label}
+          <span class="password-row">
+            <input type="password" name="${o.name}" placeholder="${o.placeholder || ''}" autocomplete="new-password">
+            <button type="button" class="password-toggle" aria-label="Show password">${ICONS.eye || '👁'}</button>
+          </span>
+        </label>`;
+      }
       return `<label>${o.label}
         <input type="text" name="${o.name}" placeholder="${o.placeholder || ''}" value="${o.default || ''}">
       </label>`;
     }).join('');
+
+    toolOptionsEl.querySelectorAll('.password-toggle').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const input = btn.previousElementSibling;
+        input.type = input.type === 'password' ? 'text' : 'password';
+      });
+    });
 
     toolOptionsEl.querySelectorAll('input[type=range]').forEach((r) => {
       const valEl = r.closest('.range-row').querySelector('.range-val');

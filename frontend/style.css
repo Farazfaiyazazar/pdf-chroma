@@ -336,3 +336,14 @@ a:focus-visible, button:focus-visible, .tool-card:focus-visible, .filter-pill:fo
 .error-actions{display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-bottom:44px;}
 .error-quicklinks p{color:var(--ink-faint); font-size:0.9rem; margin-bottom:14px;}
 .error-quicklinks .related-links{justify-content:center;}
+
+/* Password field with show/hide toggle */
+.password-row{display:flex; align-items:center; gap:0; position:relative;}
+.password-row input[type=password], .password-row input[type=text]{flex:1; padding-right:44px !important;}
+.password-toggle{
+  position:absolute; right:6px; top:50%; transform:translateY(-50%);
+  background:none; border:none; color:var(--ink-faint); cursor:pointer; padding:6px;
+  display:flex; align-items:center; justify-content:center; border-radius:6px;
+  transition:color .2s var(--ease), background .2s var(--ease);
+}
+.password-toggle:hover{color:var(--ink); background:rgba(255,255,255,0.06);}
