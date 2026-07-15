@@ -211,6 +211,7 @@ function renderPage(tool){
 
 <footer class="site-footer wrap">
   <p>PDF Chroma is built for anyone tired of upload limits, watermarked exports, and "premium" paywalls. Free, forever.</p>
+  <p style="margin-top:10px;"><a href="/privacy.html" style="color:var(--ink-faint);">Privacy Policy</a> · <a href="/terms.html" style="color:var(--ink-faint);">Terms of Service</a></p>
 </footer>
 
 <script src="../tools-data.js" defer></script>
@@ -239,7 +240,9 @@ const urls = [
   `${SITE_URL}/index.html`,
   ...TOOLS.map((t) => `${SITE_URL}/tools/${t.slug}.html`),
   `${SITE_URL}/blog/index.html`,
-  ...BLOG_POSTS.map((p) => `${SITE_URL}/blog/${p.slug}.html`)
+  ...BLOG_POSTS.map((p) => `${SITE_URL}/blog/${p.slug}.html`),
+  `${SITE_URL}/privacy.html`,
+  `${SITE_URL}/terms.html`
 ];
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
