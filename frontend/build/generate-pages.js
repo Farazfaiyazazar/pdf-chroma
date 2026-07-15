@@ -133,7 +133,7 @@ function renderPage(tool){
           </g>
         </svg>
       </span>
-      <span class="brand-word">PDF<span class="brand-accent">Chroma</span></span>
+      <span class="brand-word">PDF <span class="brand-accent">Chroma</span></span>
     </a>
     <nav class="site-nav">
       <a href="../index.html#organize">Organize</a>
