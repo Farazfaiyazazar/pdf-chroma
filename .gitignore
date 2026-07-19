@@ -1,0 +1,6 @@
+*.zip
+self-hosted-fonts/
+missing-images/
+chroma-fix/
+security-update/
+fonts-deploy/
