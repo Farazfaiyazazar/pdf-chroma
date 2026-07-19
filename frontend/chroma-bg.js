@@ -4,8 +4,15 @@
 // parallax drift), and occasionally "link" to a nearby icon with a soft
 // light beam — a nod to what this site actually does: converting between
 // formats. Sits fixed behind all content on every page.
+//
+// Performance note: this entire effect is purely decorative, so its setup
+// (canvas sizing, icon creation, starting the animation loop) is deferred
+// until after the page's 'load' event. Running it immediately was
+// competing with the browser's initial paint on throttled/mobile CPUs,
+// visibly delaying LCP (the hero heading) — deferring it removes that
+// contention entirely without changing how the effect looks once running.
 
-(function () {
+function initChromaBackground() {
   const canvas = document.getElementById('chromaCanvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
@@ -115,7 +122,6 @@
       }
     });
 
-    // soft light-links between nearby icons — hints at "conversion"
     for (let i = 0; i < icons.length; i++) {
       for (let j = i + 1; j < icons.length; j++) {
         const a = icons[i], b = icons[j];
@@ -150,4 +156,12 @@
       else raf = requestAnimationFrame(loop);
     });
   }
-})();
+}
+
+// Defer all of the above until the page has fully loaded, so canvas setup
+// and the animation loop never compete with initial render/LCP.
+if (document.readyState === 'complete') {
+  initChromaBackground();
+} else {
+  window.addEventListener('load', initChromaBackground);
+}

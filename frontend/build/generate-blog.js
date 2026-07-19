@@ -50,11 +50,7 @@ function headMeta(post) {
 <link rel="icon" href="/assets/favicon-192.png" sizes="192x192" type="image/png">
 <link rel="icon" href="/assets/favicon-16.png" sizes="16x16" type="image/png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=optional">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=optional" media="print" onload="this.media='all'; this.onload=null;">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=optional"></noscript>
+
 <link rel="stylesheet" href="../style.css">`;
 }
 
@@ -185,7 +181,6 @@ ${headerNav()}
 
 ${footer()}
 
-<script src="../tools-data.js" defer></script>
 <script src="../chroma-bg.js" defer></script>
 </body>
 </html>
@@ -230,11 +225,7 @@ function renderIndex() {
 <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="/assets/favicon-192.png" sizes="192x192" type="image/png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=optional">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=optional" media="print" onload="this.media='all'; this.onload=null;">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=optional"></noscript>
+
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -258,7 +249,6 @@ ${headerNav()}
 
 ${footer()}
 
-<script src="../tools-data.js" defer></script>
 <script src="../chroma-bg.js" defer></script>
 </body>
 </html>

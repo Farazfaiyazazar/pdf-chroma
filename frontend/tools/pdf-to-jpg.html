@@ -31,11 +31,7 @@
 <meta name="twitter:description" content="Turn every page of a PDF into a high-quality JPG image. Free, fast, one image per page, delivered as a zip for multi-page files.">
 <meta name="twitter:image" content="https://pdfchroma.com/assets/og-image.png">
 <meta name="twitter:card" content="summary">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=optional">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=optional" media="print" onload="this.media='all'; this.onload=null;">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=optional"></noscript>
+
 <link rel="stylesheet" href="../style.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"PDF to JPG — PDF Chroma","url":"https://pdfchroma.com/tools/pdf-to-jpg.html","applicationCategory":"Utility","operatingSystem":"Any (web-based)","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Turn every page of a PDF into a high-quality JPG image. Free, fast, one image per page, delivered as a zip for multi-page files."}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What resolution are the output images?","acceptedAnswer":{"@type":"Answer","text":"Pages are rendered at 150 DPI, a good balance between clarity and file size for screen viewing and most printing."}},{"@type":"Question","name":"Can I get PNG instead of JPG?","acceptedAnswer":{"@type":"Answer","text":"This tool outputs JPG by default; PNG support can be added by extending the backend route — see the project README."}},{"@type":"Question","name":"Will text stay sharp in the image?","acceptedAnswer":{"@type":"Answer","text":"Yes, at 150 DPI text remains clearly readable, though it's no longer selectable since it's now part of a flat image."}}]}</script>
@@ -173,7 +169,7 @@
   <p style="margin-top:10px;"><a href="/privacy.html" style="color:var(--ink-faint);">Privacy Policy</a> · <a href="/terms.html" style="color:var(--ink-faint);">Terms of Service</a></p>
 </footer>
 
-<script src="../tools-data.js" defer></script>
+<script src="../tools-data-lite.js" defer></script>
 <script src="../chroma-bg.js" defer></script>
 <script>window.CURRENT_TOOL_ID = "pdf-to-jpg"; window.OBSIDIAN_API_BASE = "https://pdfchroma.com/api";</script>
 <script src="../tool-widget.js" defer></script>

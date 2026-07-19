@@ -31,11 +31,7 @@
 <meta name="twitter:description" content="Split a PDF into separate files or pull out just the pages you need. Enter a page range or leave it blank to split every page individually.">
 <meta name="twitter:image" content="https://pdfchroma.com/assets/og-image.png">
 <meta name="twitter:card" content="summary">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=optional">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=optional" media="print" onload="this.media='all'; this.onload=null;">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=optional"></noscript>
+
 <link rel="stylesheet" href="../style.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Split PDF — PDF Chroma","url":"https://pdfchroma.com/tools/split-pdf.html","applicationCategory":"Utility","operatingSystem":"Any (web-based)","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Split a PDF into separate files or pull out just the pages you need. Enter a page range or leave it blank to split every page individually."}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What happens if I don't enter a page range?","acceptedAnswer":{"@type":"Answer","text":"The tool splits every page of the document into its own individual PDF file, delivered as a zip."}},{"@type":"Question","name":"Can I extract non-consecutive pages?","acceptedAnswer":{"@type":"Answer","text":"Yes — separate ranges with commas, e.g. \"2,4,9-12\" pulls out page 2, page 4, and pages 9 through 12 as separate files."}},{"@type":"Question","name":"Will splitting affect the quality of my pages?","acceptedAnswer":{"@type":"Answer","text":"No, pages are extracted exactly as they appear in the original — no re-compression or quality loss."}}]}</script>
@@ -172,7 +168,7 @@
   <p style="margin-top:10px;"><a href="/privacy.html" style="color:var(--ink-faint);">Privacy Policy</a> · <a href="/terms.html" style="color:var(--ink-faint);">Terms of Service</a></p>
 </footer>
 
-<script src="../tools-data.js" defer></script>
+<script src="../tools-data-lite.js" defer></script>
 <script src="../chroma-bg.js" defer></script>
 <script>window.CURRENT_TOOL_ID = "split"; window.OBSIDIAN_API_BASE = "https://pdfchroma.com/api";</script>
 <script src="../tool-widget.js" defer></script>

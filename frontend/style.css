@@ -1,3 +1,64 @@
+/* ============ Self-hosted fonts ============
+   Replaces the Google Fonts CDN link. Same font-family names as before
+   ('Plus Jakarta Sans', 'Inter', 'JetBrains Mono'), so nothing else in
+   this stylesheet needs to change — only where the font *files* come
+   from. Serving these from our own domain removes an entire external
+   round-trip (DNS + TLS + request to fonts.googleapis.com/fonts.gstatic.com)
+   from the critical rendering path, which was contributing to the slow
+   mobile LCP. font-display: optional means text renders immediately with
+   a fallback font if the file isn't ready within ~100ms, and never swaps
+   later — so this also can't cause layout shift. */
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: optional;
+  src: url('/assets/fonts/plus-jakarta-sans-latin-700-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 800;
+  font-display: optional;
+  src: url('/assets/fonts/plus-jakarta-sans-latin-800-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: optional;
+  src: url('/assets/fonts/inter-latin-400-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: optional;
+  src: url('/assets/fonts/inter-latin-600-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: optional;
+  src: url('/assets/fonts/inter-latin-700-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: optional;
+  src: url('/assets/fonts/jetbrains-mono-latin-400-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: optional;
+  src: url('/assets/fonts/jetbrains-mono-latin-700-normal.woff2') format('woff2');
+}
+
 /* ============ Design tokens ============ */
 :root{
   --bg:#0a0a0f;
