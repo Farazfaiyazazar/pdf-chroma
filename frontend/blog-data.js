@@ -78,7 +78,7 @@ const BLOG_POSTS = [
     publishDate: '2026-06-25',
     readMinutes: 5,
     relatedTools: ['pdf-to-word', 'word-to-pdf'],
-    relatedPosts: ['pdf-to-powerpoint-guide', 'pdf-to-excel-guide'],
+    relatedPosts: ['pdf-to-powerpoint-guide', 'pdf-to-excel-guide', 'complete-guide-to-pdf-file-types-and-conversion'],
     content: [
       { type: 'p', text: 'A PDF isn\'t really a "document" in the way Word thinks about documents — it\'s closer to a printed page description. It knows where every letter sits, but it doesn\'t necessarily know that a paragraph is a paragraph, or that a table is a table. Converting back to an editable format means reconstructing that structure, and how well that goes depends heavily on how the PDF was made in the first place.' },
       { type: 'h2', text: 'Which PDFs convert cleanly' },
@@ -135,7 +135,7 @@ const BLOG_POSTS = [
     publishDate: '2026-07-05',
     readMinutes: 4,
     relatedTools: ['watermark', 'numbers'],
-    relatedPosts: ['organize-a-messy-pdf', 'reduce-pdf-file-size-for-email'],
+    relatedPosts: ['organize-a-messy-pdf', 'password-protect-pdf-encryption-explained', 'pdf-best-practices-for-business-documents'],
     content: [
       { type: 'p', text: 'A watermark is a piece of text (or an image) stamped across every page of a document, usually at an angle, usually semi-transparent. It\'s a small addition, but it changes how a document is perceived — and it\'s worth being deliberate about when to use one.' },
       { type: 'h2', text: 'When a watermark actually helps' },
@@ -274,7 +274,7 @@ const BLOG_POSTS = [
     publishDate: '2026-07-14',
     readMinutes: 4,
     relatedTools: ['pdf-to-xls', 'xls-to-pdf'],
-    relatedPosts: ['excel-to-pdf-without-cutting-off-columns', 'convert-pdf-to-word-without-breaking-formatting'],
+    relatedPosts: ['excel-to-pdf-without-cutting-off-columns', 'complete-guide-to-pdf-file-types-and-conversion'],
     content: [
       { type: 'p', text: 'A PDF invoice, statement, or report often has exactly the numbers you need — the problem is they\'re locked in a format built for reading, not for recalculating. PDF to Excel exists to bridge that gap, but it\'s worth knowing what it\'s actually good at before relying on it for something important.' },
       { type: 'h2', text: 'What converts cleanly' },
@@ -290,6 +290,179 @@ const BLOG_POSTS = [
       { type: 'p', text: 'Before trusting any numbers pulled from a converted table, spot-check a handful of cells against the original PDF. It\'s a two-minute check that catches the kind of small misalignment (a value shifted one row down) that\'s easy to miss but expensive if it ends up in a report.' },
       { type: 'h2', text: 'Try it yourself' },
       { type: 'p', text: 'Our PDF to Excel tool works best on the clean, bordered-table case described above. For the reverse direction, Excel to PDF turns a finished spreadsheet into a fixed, shareable document.' }
+    ]
+  },
+  {
+    id: 'pdf-tools-safety',
+    slug: 'is-it-safe-to-use-free-online-pdf-tools',
+    category: 'Security',
+    title: 'Is It Safe to Use Free Online PDF Tools? What to Actually Check',
+    seoTitle: 'Is It Safe to Use Free Online PDF Tools? | PDF Chroma',
+    seoDescription: 'A practical guide to evaluating whether a free PDF tool is actually safe to use with sensitive documents — what to check, and what red flags to watch for.',
+    excerpt: 'Before uploading a contract or a tax form to a free PDF tool, it\'s worth knowing what you\'re actually trusting it with. Here\'s how to check.',
+    publishDate: '2026-07-16',
+    readMinutes: 6,
+    relatedTools: ['protect', 'unlock'],
+    relatedPosts: ['how-to-add-a-watermark-to-a-pdf', 'password-protect-pdf-encryption-explained'],
+    content: [
+      { type: 'p', text: 'Every free PDF tool asks you to do the same thing: upload a file to a server you\'ve never seen, run by a company you may know nothing about, then trust that the file is handled responsibly and deleted afterward. Most of the time, this works out fine. But "most of the time" isn\'t a great standard when the file in question is a signed contract, a tax return, or a client\'s financial statement.' },
+      { type: 'p', text: 'This isn\'t an argument against using online PDF tools — it\'s a guide to actually evaluating one before you trust it, rather than assuming.' },
+      { type: 'h2', text: '1. Check whether there\'s a real privacy policy' },
+      { type: 'p', text: 'A legitimate tool should have a specific, readable privacy policy explaining what happens to your file — not a generic template copied from somewhere else. Look for concrete details: how long files are retained, whether they\'re deleted automatically, and whether any third party can access them. If a site has no privacy policy at all, or one that\'s vague to the point of saying nothing, that\'s a real signal to be cautious.' },
+      { type: 'h2', text: '2. Look at what happens after processing' },
+      { type: 'p', text: 'Some tools quietly retain uploaded files indefinitely, sometimes to build a dataset, sometimes just from careless engineering. A trustworthy tool should explicitly state that files are deleted shortly after processing — ideally automatically, not "on request." If a service doesn\'t say this anywhere, assume it isn\'t doing it.' },
+      { type: 'h2', text: '3. Watch for accounts you don\'t actually need' },
+      { type: 'p', text: 'A tool that requires you to create an account, verify an email, and log in just to merge two PDFs is collecting more from you than the task requires. That\'s not automatically malicious, but it does mean your usage is being tied to an identity somewhere, for reasons unrelated to actually helping you with a PDF.' },
+      { type: 'h2', text: '4. Check who actually owns the infrastructure' },
+      { type: 'p', text: 'This is the least visible but most important check: is your file processed on infrastructure the tool\'s own operator controls directly, or does it get routed through several unnamed third-party services along the way? Open-source, self-hostable tools have an advantage here — you (or anyone) can read the actual code and see exactly what happens to a file, rather than trusting a claim on a marketing page.' },
+      { type: 'h2', text: 'A simple rule of thumb' },
+      { type: 'list', items: [
+        'For a low-stakes file (a flyer, a public document, something already shared publicly) — any reasonably reputable tool is fine.',
+        'For a moderately sensitive file (a resume, an internal memo) — check that there\'s a real privacy policy and automatic deletion.',
+        'For a genuinely sensitive file (a contract, financial records, anything with personal data) — prefer tools that are transparent about their infrastructure, ideally open source, and consider whether the file needs password protection before it\'s ever uploaded anywhere at all.'
+      ]},
+      { type: 'h2', text: 'Where PDF Chroma fits into this' },
+      { type: 'p', text: 'This entire site is built around that last category: it\'s open source, self-hosted, and deletes files immediately after processing — not because that\'s a marketing claim, but because you (or anyone) can read the actual backend code and verify it. If you\'re evaluating any PDF tool, applying the checklist above to us too is exactly the right instinct.' }
+    ]
+  },
+  {
+    id: 'pdf-password-protection-explained',
+    slug: 'password-protect-pdf-encryption-explained',
+    category: 'Security',
+    title: 'How to Password-Protect a PDF (And What Encryption Actually Means)',
+    seoTitle: 'How to Password Protect a PDF — Free & Explained | PDF Chroma',
+    seoDescription: 'How to add a real password to a PDF, what "256-bit AES encryption" actually means in plain terms, and when password protection is and isn\'t enough.',
+    excerpt: 'A password on a PDF can mean two very different things depending on how it\'s implemented. Here\'s what actually happens, and how to tell the difference.',
+    publishDate: '2026-07-17',
+    readMinutes: 6,
+    relatedTools: ['protect', 'unlock'],
+    relatedPosts: ['is-it-safe-to-use-free-online-pdf-tools', 'how-to-add-a-watermark-to-a-pdf'],
+    content: [
+      { type: 'p', text: 'Not all "password-protected PDFs" are equally protected. Some tools genuinely encrypt the file content, meaning the data itself is scrambled without the right password. Others just add a login-style prompt on top of a file that\'s otherwise wide open to anyone with the right software. The difference matters a lot if you\'re protecting something that actually needs to stay private.' },
+      { type: 'h2', text: 'What real encryption means, in plain terms' },
+      { type: 'p', text: 'When a PDF is properly encrypted, its content is mathematically scrambled using the password (or a key derived from it) as part of the process. Without the correct password, the underlying data is genuinely unreadable — not hidden behind a prompt, but actually transformed into something unintelligible. This is what "256-bit AES encryption" refers to: AES is the encryption method (a well-established, heavily analyzed standard used by governments and banks), and 256-bit describes the size of the key, which determines how computationally infeasible it is to guess.' },
+      { type: 'h2', text: 'Why the password itself matters more than the encryption strength' },
+      { type: 'p', text: 'A 256-bit AES-encrypted file protected with the password "1234" is not meaningfully secure — an attacker doesn\'t need to break the encryption if they can just guess the password directly. The strength of the underlying encryption is only half the story; a longer, less predictable password (ideally a random phrase rather than a common word or short number sequence) is what actually makes the protection meaningful in practice.' },
+      { type: 'h2', text: 'What password protection does and doesn\'t solve' },
+      { type: 'list', items: [
+        'It protects a file that\'s sitting somewhere or being transmitted — someone who intercepts or finds it can\'t open it without the password.',
+        'It does not protect the file once it\'s been opened by someone with the correct password — at that point, they can save, forward, or screenshot the content freely.',
+        'It does not protect the file if the password itself is shared insecurely (for example, sent in the same email as the file itself, which defeats the purpose entirely).',
+        'It is not a substitute for access control on shared drives or email accounts — it protects the individual file, not the systems it might also be sitting on.'
+      ]},
+      { type: 'h2', text: 'A sensible way to share the password' },
+      { type: 'p', text: 'Send the password through a different channel than the file itself — a text message if the file went by email, or a phone call if both went digitally. This one habit closes the most common real-world gap in an otherwise properly encrypted file.' },
+      { type: 'h2', text: 'Try it yourself' },
+      { type: 'p', text: 'Our Protect PDF tool uses real 256-bit AES encryption via the open-source qpdf library — the same category of encryption described above, not a cosmetic login screen. If you need to remove a password from a file you already have the password for, Unlock PDF does the reverse.' }
+    ]
+  },
+  {
+    id: 'pdf-file-types-guide',
+    slug: 'complete-guide-to-pdf-file-types-and-conversion',
+    category: 'Convert',
+    title: 'The Complete Guide to PDF File Types and When to Convert Between Them',
+    seoTitle: 'PDF File Types Explained: When to Convert to Word, Excel & More | PDF Chroma',
+    seoDescription: 'A complete, practical guide to choosing between PDF, Word, Excel, PowerPoint, and image formats — and when converting between them actually makes sense.',
+    excerpt: 'PDF, Word, Excel, and PowerPoint each exist for a reason. Choosing the wrong one for the job is more common than most people realize.',
+    publishDate: '2026-07-18',
+    readMinutes: 7,
+    relatedTools: ['pdf-to-word', 'word-to-pdf', 'pdf-to-excel', 'xls-to-pdf', 'pdf-to-ppt', 'ppt-to-pdf'],
+    relatedPosts: ['convert-pdf-to-word-without-breaking-formatting', 'pdf-to-excel-guide'],
+    content: [
+      { type: 'p', text: 'Most confusion around file conversion comes from a simple mismatch: using a format for something it wasn\'t designed to do. Each of the major document formats — PDF, Word, Excel, PowerPoint — was built around a specific job. Understanding that job clarifies almost every "should I convert this?" question.' },
+      { type: 'h2', text: 'PDF: built for consistent presentation' },
+      { type: 'p', text: 'A PDF is designed to look identical everywhere — same fonts, same layout, same page breaks, regardless of what device or software opens it. That\'s its entire purpose. It is deliberately not designed for easy editing; fighting against that is where most PDF frustration comes from.' },
+      { type: 'p', text: 'Use PDF when: sending a finished document that shouldn\'t change (a contract, an invoice, a finalized report), or when consistent visual presentation matters more than editability.' },
+      { type: 'h2', text: 'Word: built for writing and editing' },
+      { type: 'p', text: 'Word documents are structured around text that\'s meant to be revised — paragraphs, headings, and styles that stay flexible. Converting a PDF to Word only makes sense when you actually intend to edit the content; if you just need to read or share it, keeping it as a PDF avoids the formatting quirks that conversion can introduce.' },
+      { type: 'p', text: 'Use Word (and convert to it) when: you need to actually revise text, restructure a document, or reuse content from a PDF in a new writing project.' },
+      { type: 'h2', text: 'Excel: built for calculation, not just tables' },
+      { type: 'p', text: 'A common mistake is treating Excel as "a way to show tables" rather than what it actually is: a calculation engine. If you need to recalculate, filter, sort, or chart data, Excel is the right format. If you just need someone to see a table without editing it, a PDF is usually the better, more locked-down choice — and it\'s much harder to accidentally overwrite a formula in a PDF.' },
+      { type: 'p', text: 'Use Excel (and convert to it) when: the data needs further calculation or manipulation, not just viewing.' },
+      { type: 'h2', text: 'PowerPoint: built for a live, spoken narrative' },
+      { type: 'p', text: 'A slide deck is designed to support someone talking — sparse text, visual pacing, one idea per slide. A PDF report crammed with paragraphs doesn\'t become a good presentation just because it\'s converted into slide-shaped pages; the content itself usually needs to be edited down afterward, regardless of format.' },
+      { type: 'h2', text: 'A quick decision guide' },
+      { type: 'list', items: [
+        'Need it to look the same everywhere and stay unchanged? → PDF',
+        'Need to actually edit or rewrite the text? → Word',
+        'Need to calculate, sort, or chart the data? → Excel',
+        'Need to present it live, spoken aloud to a room? → PowerPoint',
+        'Need to drop it into a slide, webpage, or chat where a file attachment won\'t preview? → Image (JPG)'
+      ]},
+      { type: 'h2', text: 'Try it yourself' },
+      { type: 'p', text: 'Whichever direction you need, PDF Chroma covers all of these conversions — PDF to Word, PDF to Excel, PDF to PowerPoint, and back again, each processed the same way: on our own server, deleted right after.' }
+    ]
+  },
+  {
+    id: 'self-host-pdf-tools-guide',
+    slug: 'how-to-self-host-your-own-pdf-tools',
+    category: 'Organize',
+    title: 'How to Self-Host Your Own PDF Tools: A Developer\'s Guide',
+    seoTitle: 'How to Self-Host PDF Tools (Open Source Guide) | PDF Chroma',
+    seoDescription: 'A developer-focused walkthrough of what it actually takes to self-host a PDF toolkit — the real infrastructure, dependencies, and trade-offs involved.',
+    excerpt: 'Self-hosting sounds appealing until you actually price out what it takes. Here\'s an honest breakdown of the real infrastructure involved.',
+    publishDate: '2026-07-19',
+    readMinutes: 7,
+    relatedTools: ['merge', 'compress', 'pdf-to-word'],
+    relatedPosts: ['is-it-safe-to-use-free-online-pdf-tools', 'complete-guide-to-pdf-file-types-and-conversion'],
+    content: [
+      { type: 'p', text: '"Self-hosted" gets used as a selling point often enough that it\'s worth explaining plainly what it actually involves — not as an abstract principle, but as real infrastructure someone has to run. This is the honest version, from actually having built and operated one.' },
+      { type: 'h2', text: 'What "self-hosted" actually requires' },
+      { type: 'p', text: 'At minimum: a server you control (a basic cloud VM is enough — nothing exotic), a reverse proxy handling HTTPS (Nginx with a free Let\'s Encrypt certificate is the standard choice), a process manager keeping the application alive across crashes and reboots (PM2 is common for Node.js apps), and — specifically for PDF tooling — a couple of system-level dependencies for the harder conversions.' },
+      { type: 'h2', text: 'The dependencies that actually do the work' },
+      { type: 'list', items: [
+        'pdf-lib (or equivalent) handles the pure-JavaScript operations — merging, splitting, rotating, watermarking — with no system dependencies at all.',
+        'LibreOffice, run in headless mode, handles Office format conversions (Word, Excel, PowerPoint to and from PDF). This is a genuinely heavy dependency — expect it to need real memory, not a token amount.',
+        'poppler-utils handles PDF-to-image conversion.',
+        'qpdf handles password protection and encryption.'
+      ]},
+      { type: 'p', text: 'None of these are exotic, but LibreOffice specifically is worth budgeting for — it is not a lightweight process, and underpowered servers (1GB of RAM or less) can struggle with it under concurrent load.' },
+      { type: 'h2', text: 'The parts that aren\'t obvious until you hit them' },
+      { type: 'list', items: [
+        'File cleanup: uploaded and processed files need to actually be deleted afterward, both immediately after each request and via a periodic sweep as a safety net for abandoned uploads.',
+        'Rate limiting: a public-facing tool without request limits is an open invitation to be used as free infrastructure by someone else\'s script.',
+        'A specific, unglamorous bug category: PDF-parsing libraries sometimes default to importing a PDF as an image rather than as text, silently breaking every downstream conversion — the kind of failure that looks like "it just doesn\'t work" with no obvious error, until you dig into exactly which import filter is being used.'
+      ]},
+      { type: 'h2', text: 'Is it worth it, honestly?' },
+      { type: 'p', text: 'If the goal is genuine control over where files go — for a business, a team, or personal principle — yes, and it\'s more achievable than it sounds; a small cloud VM costs a few dollars a month. If the goal is convenience alone, a hosted third-party tool will always be less setup. Self-hosting is a trade of a few hours of setup and ongoing maintenance in exchange for actually knowing, rather than trusting, what happens to a file.' },
+      { type: 'h2', text: 'See the actual implementation' },
+      { type: 'p', text: 'PDF Chroma\'s full source — backend and frontend — is open source and available to read, fork, or self-host directly, including everything described above already wired together.' }
+    ]
+  },
+  {
+    id: 'pdf-business-documents-best-practices',
+    slug: 'pdf-best-practices-for-business-documents',
+    category: 'Organize',
+    title: 'PDF Best Practices for Business Documents: Contracts, Invoices, and Reports',
+    seoTitle: 'PDF Best Practices for Contracts, Invoices & Reports | PDF Chroma',
+    seoDescription: 'Practical PDF habits for business documents — from draft watermarks to page numbering to file size — that make documents look more professional and get handled correctly.',
+    excerpt: 'A handful of small, consistent PDF habits separate documents that look deliberately prepared from ones that look thrown together.',
+    publishDate: '2026-07-19',
+    readMinutes: 5,
+    relatedTools: ['watermark', 'numbers', 'protect', 'merge', 'compress'],
+    relatedPosts: ['how-to-add-a-watermark-to-a-pdf', 'password-protect-pdf-encryption-explained'],
+    content: [
+      { type: 'p', text: 'The difference between a document that reads as professionally prepared and one that reads as rushed is rarely the writing itself — it\'s a handful of small, consistent formatting habits. These apply across contracts, invoices, proposals, and reports alike.' },
+      { type: 'h2', text: 'Mark drafts as drafts, clearly' },
+      { type: 'p', text: 'Any version still under review should carry a visible watermark saying so. This single habit prevents the single most common document mistake: someone treating an unfinished draft as the final version, because nothing on the page told them otherwise.' },
+      { type: 'h2', text: 'Number the pages on anything longer than one' },
+      { type: 'p', text: 'Once a document passes a single page, page numbers stop being optional. Any reviewer who needs to say "see the clause on page 4" needs there to actually be a page 4 marked as such. This is a small detail that costs nothing and is skipped constantly.' },
+      { type: 'h2', text: 'Combine related documents instead of sending several' },
+      { type: 'p', text: 'A contract, its appendix, and a cover letter belong in one file, in that order — not as three separate attachments the recipient has to open and cross-reference manually. Merging them into a single, correctly ordered document is a small effort that noticeably improves how organized the whole package feels.' },
+      { type: 'h2', text: 'Protect anything genuinely sensitive before sending' },
+      { type: 'p', text: 'Signed contracts, financial statements, and anything containing personal data should be password-protected before they leave your hands — not as an afterthought if something goes wrong, but as a default habit for this category of document.' },
+      { type: 'h2', text: 'Keep the file size sane' },
+      { type: 'p', text: 'A report that grew to 40MB because of unnecessarily high-resolution embedded images is a bad experience for whoever has to download and open it, especially on a phone. Compress before sending, particularly for anything with photos, scanned pages, or design assets embedded.' },
+      { type: 'h2', text: 'A simple pre-send checklist' },
+      { type: 'list', items: [
+        'Is this still a draft? → Add a watermark.',
+        'Is it longer than one page? → Add page numbers.',
+        'Are there multiple related files? → Merge them into one, in the right order.',
+        'Does it contain sensitive information? → Password-protect it.',
+        'Is the file unusually large? → Compress it before sending.'
+      ]},
+      { type: 'h2', text: 'Try it yourself' },
+      { type: 'p', text: 'Every step above maps directly to a tool here: Add Watermark, Add Page Numbers, Merge PDF, Protect PDF, and Compress PDF — each takes under a minute, and none of them require installing anything.' }
     ]
   }
 ];
