@@ -65,3 +65,80 @@ document.querySelectorAll('[data-scrollfilter]').forEach((link) => {
     if (pill) pill.click();
   });
 });
+
+// ---- Hero drop zone: route a dropped/chosen file to the right tool ----
+// Unambiguous types go straight to their converter, carrying the file over via
+// an IndexedDB handoff (read back by tool-widget.js). A bare PDF is ambiguous
+// (merge? compress? convert?), so we scroll to the grid and let the user pick.
+(function initHeroDrop(){
+  const drop = document.getElementById('heroDrop');
+  const input = document.getElementById('heroDropInput');
+  const hint = document.getElementById('heroDropHint');
+  if (!drop || !input) return;
+
+  const ROUTE = {
+    doc: 'word-to-pdf', docx: 'word-to-pdf',
+    ppt: 'powerpoint-to-pdf', pptx: 'powerpoint-to-pdf',
+    xls: 'excel-to-pdf', xlsx: 'excel-to-pdf',
+    jpg: 'jpg-to-pdf', jpeg: 'jpg-to-pdf', png: 'jpg-to-pdf',
+  };
+
+  function showHint(msg){
+    if (!hint) return;
+    hint.textContent = msg;
+    hint.hidden = false;
+  }
+
+  // Store the File in IndexedDB so the destination tool page can pick it up.
+  // Resolves either way — a storage failure just means no handoff, not a crash.
+  function stashFile(file){
+    return new Promise((resolve) => {
+      try {
+        const req = indexedDB.open('pdfchroma', 1);
+        req.onupgradeneeded = () => req.result.createObjectStore('handoff');
+        req.onerror = () => resolve(false);
+        req.onsuccess = () => {
+          try {
+            const db = req.result;
+            const tx = db.transaction('handoff', 'readwrite');
+            tx.objectStore('handoff').put({ file: file, ts: Date.now() }, 'pending');
+            tx.oncomplete = () => resolve(true);
+            tx.onerror = () => resolve(false);
+          } catch (_) { resolve(false); }
+        };
+      } catch (_) { resolve(false); }
+    });
+  }
+
+  function handleFile(file){
+    if (!file) return;
+    const ext = (file.name.split('.').pop() || '').toLowerCase();
+    const slug = ROUTE[ext];
+    if (slug) {
+      showHint('Opening the right tool for “' + file.name + '”…');
+      stashFile(file).then(() => { window.location.href = 'tools/' + slug + '.html?handoff=1'; });
+    } else if (ext === 'pdf') {
+      showHint('Got your PDF — pick what to do with it below.');
+      document.getElementById('tools').scrollIntoView({ behavior: 'smooth' });
+    } else {
+      showHint('That file type isn’t supported yet. Try a PDF, Word, PowerPoint, Excel, or image file.');
+    }
+  }
+
+  drop.addEventListener('click', () => input.click());
+  drop.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); input.click(); }
+  });
+  input.addEventListener('change', () => { if (input.files && input.files[0]) handleFile(input.files[0]); });
+
+  drop.addEventListener('dragover', (e) => { e.preventDefault(); drop.classList.add('is-dragover'); });
+  drop.addEventListener('dragleave', (e) => {
+    if (e.target === drop) drop.classList.remove('is-dragover');
+  });
+  drop.addEventListener('drop', (e) => {
+    e.preventDefault();
+    drop.classList.remove('is-dragover');
+    const f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+    if (f) handleFile(f);
+  });
+})();

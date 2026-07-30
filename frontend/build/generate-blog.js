@@ -209,10 +209,10 @@ function renderIndex() {
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blog — Guides for working with PDFs | PDF Chroma</title>
+<title>Blog - Guides for working with PDFs | PDF Chroma</title>
 <meta name="description" content="Practical, no-fluff guides for merging, converting, compressing, and organizing PDF files.">
 <link rel="canonical" href="${SITE_URL}/blog/index.html">
-<meta property="og:title" content="Blog — Guides for working with PDFs | PDF Chroma">
+<meta property="og:title" content="Blog - Guides for working with PDFs | PDF Chroma">
 <meta property="og:description" content="Practical, no-fluff guides for merging, converting, compressing, and organizing PDF files.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="${SITE_URL}/blog/index.html">
@@ -237,7 +237,7 @@ ${headerNav()}
 <main>
   <section class="blog-hero wrap">
     <h1>Guides for working with PDFs</h1>
-    <p class="blog-hero-sub">Practical, no-fluff advice — no filler, no "10 amazing tips," just what actually works.</p>
+    <p class="blog-hero-sub">Practical, no-fluff advice - no filler, no "10 amazing tips," just what actually works.</p>
   </section>
 
   <section class="blog-grid-section wrap">

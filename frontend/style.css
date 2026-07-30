@@ -176,6 +176,55 @@ code{font-family:var(--font-mono); background:rgba(255,255,255,0.08); color:var(
 .hero h1{font-size:clamp(2.2rem, 5vw, 3.4rem); line-height:1.16; margin-bottom:16px;}
 .hero-sub{color:var(--ink-muted); font-size:1.08rem; max-width:52ch; margin:0 auto 30px;}
 
+/* ============ Hero drop zone (primary entry point) ============ */
+.drop-wrap{padding:4px 24px 14px;}
+.hero-drop{
+  position:relative;
+  display:flex; flex-direction:column; align-items:center; gap:6px;
+  max-width:640px; margin:0 auto;
+  padding:34px 28px;
+  border:2px dashed var(--border);
+  border-radius:var(--radius-lg);
+  background:
+    radial-gradient(120% 140% at 50% 0%, rgba(239,68,68,0.05), transparent 60%),
+    var(--bg-soft);
+  cursor:pointer; text-align:center;
+  transition:border-color .25s var(--ease), background .25s var(--ease), transform .18s var(--ease-spring);
+}
+.hero-drop > *{pointer-events:none;} /* all drag/click events hit the container */
+.hero-drop:hover{border-color:var(--border-hover); background:var(--surface);}
+.hero-drop:focus-visible{outline:2px solid var(--brand); outline-offset:3px;}
+.hero-drop:active{transform:scale(0.992);}
+.hero-drop.is-dragover{
+  border-color:var(--brand); border-style:solid;
+  background:var(--surface-2);
+  box-shadow:0 0 0 4px var(--brand-tint), 0 24px 50px -24px rgba(0,0,0,0.6);
+}
+.hero-drop-icon{
+  display:flex; align-items:center; justify-content:center;
+  width:60px; height:60px; margin-bottom:6px;
+  border-radius:16px; color:var(--brand-dark);
+  background:var(--brand-tint);
+  animation:dropFloat 3.2s var(--ease) infinite;
+}
+@keyframes dropFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
+.hero-drop.is-dragover .hero-drop-icon{animation:none; transform:scale(1.06);}
+.hero-drop-title{font-family:var(--font-display); font-weight:800; font-size:1.22rem; color:var(--ink);}
+.hero-drop-sub{color:var(--ink-muted); font-size:0.95rem; max-width:44ch;}
+.hero-drop-browse{color:var(--brand-dark); font-weight:700; text-decoration:underline; text-underline-offset:2px;}
+.hero-drop-types{margin-top:8px; font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.04em; color:var(--ink-faint);}
+.hero-drop-hint{
+  margin-top:10px; font-size:0.9rem; font-weight:600; color:var(--brand-dark);
+}
+@media (max-width:520px){
+  .hero-drop{padding:26px 18px;}
+  .hero-drop-title{font-size:1.08rem;}
+}
+@media (prefers-reduced-motion:reduce){
+  .hero-drop-icon{animation:none;}
+  .hero-drop:active{transform:none;}
+}
+
 .filter-bar{display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:8px;}
 .filter-pill{
   padding:10px 20px; border-radius:999px; border:1.5px solid var(--border); background:var(--surface);
@@ -189,7 +238,74 @@ code{font-family:var(--font-mono); background:rgba(255,255,255,0.08); color:var(
 
 /* ============ Tool grid ============ */
 .tools-section{padding:10px 24px 60px;}
-.tool-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(250px, 1fr)); gap:18px;}
+
+/* Bento grid: explicit column counts per breakpoint so featured tiles can
+   span predictably. grid-auto-flow:dense backfills gaps when the filter
+   hides cards, so a spanning tile never leaves a hole. */
+.tool-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  grid-auto-flow:row dense;
+  gap:18px;
+}
+@media (min-width:560px){ .tool-grid{grid-template-columns:repeat(2,1fr);} }
+@media (min-width:900px){ .tool-grid{grid-template-columns:repeat(3,1fr);} }
+@media (min-width:1200px){ .tool-grid{grid-template-columns:repeat(4,1fr);} }
+
+/* --- Featured tiles (keyed by href so the filter JS stays untouched) --- */
+@media (min-width:560px){
+  .tool-card[href$="merge-pdf.html"],
+  .tool-card[href$="compress-pdf.html"],
+  .tool-card[href$="pdf-to-word.html"]{ grid-column:span 2; }
+}
+/* On the widest layout, Merge becomes the 2x2 anchor of the grid. */
+@media (min-width:1200px){
+  .tool-card[href$="merge-pdf.html"]{ grid-column:span 2; grid-row:span 2; }
+}
+
+/* Shared featured styling: slightly stronger surface, a thin spectrum edge
+   as the single Chroma signature moment, and a "Popular" tag. */
+.tool-card[href$="merge-pdf.html"],
+.tool-card[href$="compress-pdf.html"],
+.tool-card[href$="pdf-to-word.html"]{
+  position:relative;
+  background:linear-gradient(180deg, var(--surface-2), var(--surface));
+  border-color:#31313d;
+  overflow:hidden;
+}
+.tool-card[href$="merge-pdf.html"]::before,
+.tool-card[href$="compress-pdf.html"]::before,
+.tool-card[href$="pdf-to-word.html"]::before{
+  content:"Popular";
+  position:absolute; top:16px; right:16px;
+  font-family:var(--font-mono); font-size:0.62rem; letter-spacing:0.08em;
+  text-transform:uppercase; color:var(--ink-muted);
+  padding:4px 9px; border-radius:999px;
+  border:1px solid var(--border); background:rgba(10,10,15,0.4);
+}
+/* Thin spectrum hairline along the top edge — signature, used only here. */
+.tool-card[href$="merge-pdf.html"]::after,
+.tool-card[href$="compress-pdf.html"]::after,
+.tool-card[href$="pdf-to-word.html"]::after{
+  content:""; position:absolute; inset:0 0 auto 0; height:3px;
+  background:linear-gradient(90deg, var(--spectrum-1), var(--spectrum-2) 30%, var(--spectrum-3) 55%, var(--spectrum-4) 78%, var(--spectrum-5));
+  opacity:0.9;
+}
+/* The Merge anchor tile: let its content breathe in the taller cell and add a
+   faint corner spectrum wash so the big cell never reads as empty. */
+@media (min-width:1200px){
+  .tool-card[href$="merge-pdf.html"]{
+    justify-content:flex-start;
+    padding:30px;
+    background:
+      radial-gradient(120% 90% at 100% 100%, var(--brand-tint), transparent 60%),
+      linear-gradient(180deg, var(--surface-2), var(--surface));
+  }
+  .tool-card[href$="merge-pdf.html"] h2{font-size:1.5rem;}
+  .tool-card[href$="merge-pdf.html"] p{font-size:0.98rem; max-width:34ch;}
+  .tool-card[href$="merge-pdf.html"] .icon-badge{width:58px; height:58px;}
+  .tool-card[href$="merge-pdf.html"] .icon-badge svg{width:26px; height:26px;}
+}
 
 .tool-card{
   cursor:pointer;
