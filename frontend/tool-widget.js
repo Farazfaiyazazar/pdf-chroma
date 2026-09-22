@@ -117,33 +117,6 @@ function initToolWidget(tool){
   });
   fileInput.addEventListener('change', () => addFiles(fileInput.files));
 
-  // Handoff: if the homepage drop zone sent us here (?handoff=1), pull the
-  // stashed file out of IndexedDB and load it as if the user picked it here.
-  // Fully guarded — any failure just leaves the uploader empty, never throws.
-  (function receiveHandoff(){
-    try {
-      if (new URLSearchParams(window.location.search).get('handoff') !== '1') return;
-      if (!('indexedDB' in window)) return;
-      const req = indexedDB.open('pdfchroma', 1);
-      req.onupgradeneeded = () => req.result.createObjectStore('handoff');
-      req.onsuccess = () => {
-        try {
-          const db = req.result;
-          const tx = db.transaction('handoff', 'readwrite');
-          const store = tx.objectStore('handoff');
-          const getReq = store.get('pending');
-          getReq.onsuccess = () => {
-            const rec = getReq.result;
-            store.delete('pending'); // consume once
-            if (rec && rec.file && (Date.now() - rec.ts) < 120000) {
-              addFiles([rec.file]);
-            }
-          };
-        } catch (_) { /* no-op */ }
-      };
-    } catch (_) { /* no-op */ }
-  })();
-
   if (toolOptionsEl && tool.options) {
     toolOptionsEl.innerHTML = tool.options.map((o) => {
       if (o.type === 'select') {

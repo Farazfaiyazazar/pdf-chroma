@@ -4,3 +4,6 @@ missing-images/
 chroma-fix/
 security-update/
 fonts-deploy/
+node_modules/
+backend/tmp/
+.env

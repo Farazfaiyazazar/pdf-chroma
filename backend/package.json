@@ -1,8 +1,7 @@
 {
-  "name": "pdf-chroma-backend",
+  "name": "obsidian-pdf-toolkit-backend",
   "version": "1.0.0",
-  "license": "MIT",
-  "description": "Backend API for PDF Chroma \u2014 merge, split, compress, convert, watermark and more.",
+  "description": "Backend API for Obsidian PDF Toolkit \u2014 merge, split, compress, convert, watermark and more.",
   "main": "server.js",
   "type": "commonjs",
   "scripts": {
