@@ -6,8 +6,8 @@ const { TOOLS, TOOL_ICONS, TOOL_ICON_BY_ID } = require('../tools-data.js');
 
 const FRONTEND_DIR = path.join(__dirname, '..');
 const TOOLS_DIR = path.join(FRONTEND_DIR, 'tools');
-const SITE_URL = process.env.SITE_URL || 'https://example.com'; // update before deploying
-const API_BASE = process.env.API_BASE || 'http://localhost:4000/api'; // set to https://yourdomain.com/api in production
+const SITE_URL = process.env.SITE_URL || 'https://pdfchroma.com'; 
+const API_BASE = process.env.API_BASE || 'http://localhost:4000/api';
 
 fs.mkdirSync(TOOLS_DIR, { recursive: true });
 
@@ -43,7 +43,13 @@ function appSchema(tool){
     description: tool.seoDescription
   };
 }
-
+function breadcrumbSchema(tool){
+  return {'@context':'https://schema.org','@type':'BreadcrumbList',
+    itemListElement:[
+      {'@type':'ListItem',position:1,name:'Home',item:`${SITE_URL}/`},
+      {'@type':'ListItem',position:2,name:tool.title,item:`${SITE_URL}/tools/${tool.slug}.html`}
+    ]};
+}
 function renderPage(tool){
   const related = relatedTools(tool);
   const stepsHtml = tool.steps.map((s, i) => `<li><span class="step-num">${i + 1}</span><span>${escapeHtml(s)}</span></li>`).join('\n        ');
@@ -74,7 +80,7 @@ function renderPage(tool){
 <title>${escapeHtml(tool.seoTitle)}</title>
 <meta name="description" content="${escapeHtml(tool.seoDescription)}">
 <link rel="canonical" href="${SITE_URL}/tools/${tool.slug}.html">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
 <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="/assets/favicon-192.png" sizes="192x192" type="image/png">
 <link rel="icon" href="/assets/favicon-16.png" sizes="16x16" type="image/png">
@@ -90,11 +96,12 @@ function renderPage(tool){
 <meta name="twitter:title" content="${escapeHtml(tool.seoTitle)}">
 <meta name="twitter:description" content="${escapeHtml(tool.seoDescription)}">
 <meta name="twitter:image" content="${SITE_URL}/assets/og-image.png">
-<meta name="twitter:card" content="summary">
+
 
 <link rel="stylesheet" href="../style.css">
 <script type="application/ld+json">${JSON.stringify(appSchema(tool))}</script>
 <script type="application/ld+json">${JSON.stringify(optionsFaqSchema(tool.faq))}</script>
+<script type="application/ld+json">${JSON.stringify(breadcrumbSchema(tool))}</script>
 </head>
 <body>
 
@@ -232,17 +239,17 @@ const { BLOG_POSTS } = require('./generate-blog.js');
 
 // ---- sitemap.xml ----
 const today = new Date().toISOString().slice(0, 10);
-const urls = [
-  `${SITE_URL}/index.html`,
-  ...TOOLS.map((t) => `${SITE_URL}/tools/${t.slug}.html`),
-  `${SITE_URL}/blog/index.html`,
-  ...BLOG_POSTS.map((p) => `${SITE_URL}/blog/${p.slug}.html`),
-  `${SITE_URL}/privacy.html`,
-  `${SITE_URL}/terms.html`
+const entries = [
+  { loc: `${SITE_URL}/`, lastmod: today },
+  ...TOOLS.map((t) => ({ loc: `${SITE_URL}/tools/${t.slug}.html`, lastmod: today })),
+  { loc: `${SITE_URL}/blog/`, lastmod: today },
+  ...BLOG_POSTS.map((p) => ({ loc: `${SITE_URL}/blog/${p.slug}.html`, lastmod: p.publishDate })),
+  { loc: `${SITE_URL}/privacy.html`, lastmod: today },
+  { loc: `${SITE_URL}/terms.html`, lastmod: today }
 ];
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map((u) => `  <url><loc>${u}</loc><lastmod>${today}</lastmod></url>`).join('\n')}
+${entries.map((e) => `  <url><loc>${e.loc}</loc><lastmod>${e.lastmod}</lastmod></url>`).join('\n')}
 </urlset>
 `;
 fs.writeFileSync(path.join(FRONTEND_DIR, 'sitemap.xml'), sitemap);

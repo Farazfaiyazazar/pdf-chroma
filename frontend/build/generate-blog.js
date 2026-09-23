@@ -8,7 +8,7 @@ const { TOOLS } = require('../tools-data.js');
 
 const FRONTEND_DIR = path.join(__dirname, '..');
 const BLOG_DIR = path.join(FRONTEND_DIR, 'blog');
-const SITE_URL = process.env.SITE_URL || 'https://example.com';
+const SITE_URL = process.env.SITE_URL || 'https://pdfchroma.com';
 
 fs.mkdirSync(BLOG_DIR, { recursive: true });
 
@@ -45,7 +45,7 @@ function headMeta(post) {
 <meta name="twitter:title" content="${escapeHtml(post.seoTitle)}">
 <meta name="twitter:description" content="${escapeHtml(post.seoDescription)}">
 <meta name="twitter:image" content="${SITE_URL}/assets/og-image.png">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
 <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="/assets/favicon-192.png" sizes="192x192" type="image/png">
 <link rel="icon" href="/assets/favicon-16.png" sizes="16x16" type="image/png">
@@ -128,17 +128,26 @@ function relatedPostLinks(post) {
 
 function articleSchema(post) {
   return {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: post.title,
-    description: post.seoDescription,
-    datePublished: post.publishDate,
-    author: { '@type': 'Organization', name: 'PDF Chroma' },
-    publisher: { '@type': 'Organization', name: 'PDF Chroma' },
-    mainEntityOfPage: `${SITE_URL}/blog/${post.slug}.html`
-  };
+  '@context':'https://schema.org','@type':'Article',
+  headline: post.title,
+  description: post.seoDescription,
+  image: `${SITE_URL}/assets/og-image.png`,
+  datePublished: post.publishDate,
+  dateModified: post.updatedDate || post.publishDate,
+  author: { '@type':'Organization', name:'PDF Chroma', url:`${SITE_URL}/` },
+  publisher: { '@type':'Organization', name:'PDF Chroma',
+    logo:{ '@type':'ImageObject', url:`${SITE_URL}/assets/favicon-192.png` } },
+  mainEntityOfPage: `${SITE_URL}/blog/${post.slug}.html`
+};
 }
-
+function breadcrumbSchema(post){
+  return {'@context':'https://schema.org','@type':'BreadcrumbList',
+    itemListElement:[
+      {'@type':'ListItem',position:1,name:'Home',item:`${SITE_URL}/`},
+      {'@type':'ListItem',position:2,name:'Blog',item:`${SITE_URL}/blog/`},
+      {'@type':'ListItem',position:3,name:post.title,item:`${SITE_URL}/blog/${post.slug}.html`}
+    ]};
+}
 function renderPost(post) {
   return `<!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -155,6 +164,7 @@ function renderPost(post) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 ${headMeta(post)}
 <script type="application/ld+json">${JSON.stringify(articleSchema(post))}</script>
+<script type="application/ld+json">${JSON.stringify(breadcrumbSchema(post))}</script>
 </head>
 <body>
 
@@ -211,15 +221,17 @@ function renderIndex() {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Blog - Guides for working with PDFs | PDF Chroma</title>
 <meta name="description" content="Practical, no-fluff guides for merging, converting, compressing, and organizing PDF files.">
-<link rel="canonical" href="${SITE_URL}/blog/index.html">
+<link rel="canonical" href="${SITE_URL}/blog/">
 <meta property="og:title" content="Blog - Guides for working with PDFs | PDF Chroma">
 <meta property="og:description" content="Practical, no-fluff guides for merging, converting, compressing, and organizing PDF files.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="${SITE_URL}/blog/index.html">
+<meta property="og:url" content="${SITE_URL}/blog/">
 <meta property="og:image" content="${SITE_URL}/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Blog - Guides for working with PDFs | PDF Chroma">
+<meta name="twitter:description" content="Practical, no-fluff guides for merging, converting, compressing, and organizing PDF files.">
 <meta name="twitter:image" content="${SITE_URL}/assets/og-image.png">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
