@@ -180,6 +180,7 @@ function renderPage(tool){
       <ul class="file-list" id="fileList"></ul>
       <div class="tool-options" id="toolOptions">${optionsHtml}</div>
       <button type="button" class="btn btn--primary workspace-submit" id="wsSubmit" disabled>Process & download</button>
+            <p style="margin-top:16px;font-size:.85rem;line-height:1.55;color:var(--ink-faint);text-align:center;">Your files are processed on our own server and deleted automatically soon after - never stored, read, or shared. <a href="/privacy.html" style="color:var(--brand);">How we handle files</a></p>
 
       <div class="progress-tracker" id="progressTracker">
         <div class="progress-step"><span class="dot">1</span><small>Uploading</small><span class="progress-line"></span></div>
