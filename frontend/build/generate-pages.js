@@ -214,7 +214,7 @@ function renderPage(tool){
 
 <footer class="site-footer wrap">
   <p>PDF Chroma is built for anyone tired of upload limits, watermarked exports, and "premium" paywalls. Free, forever.</p>
-  <p style="margin-top:10px;"><a href="/privacy.html" style="color:var(--ink-faint);">Privacy Policy</a> · <a href="/terms.html" style="color:var(--ink-faint);">Terms of Service</a></p>
+  <p style="margin-top:10px;"><a href="/about.html" style="color:var(--ink-faint);">About</a> · <a href="/privacy.html" style="color:var(--ink-faint);">Privacy Policy</a> · <a href="/terms.html" style="color:var(--ink-faint);">Terms of Service</a></p>
 </footer>
 
 <script src="../tools-data-lite.js" defer></script>
@@ -244,6 +244,7 @@ const entries = [
   ...TOOLS.map((t) => ({ loc: `${SITE_URL}/tools/${t.slug}.html`, lastmod: today })),
   { loc: `${SITE_URL}/blog/`, lastmod: today },
   ...BLOG_POSTS.map((p) => ({ loc: `${SITE_URL}/blog/${p.slug}.html`, lastmod: p.publishDate })),
+  { loc: `${SITE_URL}/about.html`, lastmod: today },
   { loc: `${SITE_URL}/privacy.html`, lastmod: today },
   { loc: `${SITE_URL}/terms.html`, lastmod: today }
 ];
