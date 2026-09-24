@@ -134,10 +134,10 @@ function articleSchema(post) {
   image: `${SITE_URL}/assets/og-image.png`,
   datePublished: post.publishDate,
   dateModified: post.updatedDate || post.publishDate,
-  author: { '@type':'Organization', name:'PDF Chroma', url:`${SITE_URL}/` },
-  publisher: { '@type':'Organization', name:'PDF Chroma',
-    logo:{ '@type':'ImageObject', url:`${SITE_URL}/assets/favicon-192.png` } },
-  mainEntityOfPage: `${SITE_URL}/blog/${post.slug}.html`
+        author: { '@type':'Person', name:'Faraz', url:`${SITE_URL}/about.html` },
+    publisher: { '@type':'Organization', name:'PDF Chroma',
+      logo:{ '@type':'ImageObject', url:`${SITE_URL}/assets/favicon-192.png` } },
+    mainEntityOfPage: `${SITE_URL}/blog/${post.slug}.html`
 };
 }
 function breadcrumbSchema(post){
@@ -177,12 +177,19 @@ ${headerNav()}
     <a href="../index.html">Home</a> <span>/</span> <a href="index.html">Blog</a> <span>/</span> <span>${escapeHtml(post.title)}</span>
   </nav>
 
-  <article class="blog-article wrap">
-    <p class="blog-meta">${escapeHtml(post.category)} · ${formatDate(post.publishDate)} · ${post.readMinutes} min read</p>
+    <article class="blog-article wrap">
+    <p class="blog-meta">By Faraz · ${escapeHtml(post.category)} · ${formatDate(post.publishDate)} · ${post.readMinutes} min read</p>
     <h1>${escapeHtml(post.title)}</h1>
     <div class="blog-body">
       ${post.content.map(renderContentBlock).join('\n      ')}
     </div>
+    <aside class="author-box">
+      <div class="author-box-avatar" aria-hidden="true">F</div>
+      <div>
+        <p class="author-box-name">Faraz</p>
+        <p class="author-box-bio">Independent developer and the person behind PDF Chroma - a free, self-hosted PDF toolkit he built and runs solo. These guides come from hands-on experience building and maintaining the tools. <a href="/about.html">More about PDF Chroma</a>.</p>
+      </div>
+    </aside>
   </article>
 
   ${relatedPostLinks(post)}
