@@ -3,6 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const { TOOLS, TOOL_ICONS, TOOL_ICON_BY_ID } = require('../tools-data.js');
+const { TOOL_TIPS } = require('../tools-tips.js');
 
 const FRONTEND_DIR = path.join(__dirname, '..');
 const TOOLS_DIR = path.join(FRONTEND_DIR, 'tools');
@@ -198,6 +199,13 @@ function renderPage(tool){
         ${stepsHtml}
     </ol>
   </section>
+  
+    ${(TOOL_TIPS[tool.id] || []).length ? `<section class="tool-tips-section wrap">
+    <h2>Good to know</h2>
+    <ul class="tips-list">
+        ${(TOOL_TIPS[tool.id] || []).map((t) => `<li>${escapeHtml(t)}</li>`).join('\n        ')}
+    </ul>
+  </section>` : ''}
 
   <section class="tool-faq-section wrap">
     <h2>Frequently asked questions</h2>
