@@ -68,13 +68,26 @@ function renderPage(tool){
   return `<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-QY6S3Z83P8"></script>
+<!-- Google Analytics - loaded lazily to keep it off the critical render path -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-QY6S3Z83P8');
+  (function(){
+    var started=false;
+    function loadGA(){
+      if(started) return; started=true;
+      var s=document.createElement('script');
+      s.async=true;
+      s.src='https://www.googletagmanager.com/gtag/js?id=G-QY6S3Z83P8';
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-QY6S3Z83P8');
+    }
+    ['scroll','mousemove','touchstart','keydown','click'].forEach(function(e){
+      window.addEventListener(e, loadGA, {once:true, passive:true});
+    });
+    setTimeout(loadGA, 4000);
+  })();
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
